@@ -1,0 +1,45 @@
+//
+/* App Base Layout */
+//
+
+html {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html,
+body,
+#main-wrapper {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  font-family: $noto;
+  background: $light1;
+}
+
+.row-layout,
+.sidebar {
+  min-height: 100%;
+}
+
+.fullheight {
+  min-height: 100%;
+}
+
+input.form-control {
+  box-shadow: 0 0 3px $light4 inset;
+  background: $light1;
+}
+
+.highcharts-container {
+  width: auto !important;
+  max-width: 99% !important;
+}
