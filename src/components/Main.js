@@ -6,7 +6,12 @@ export const Main = React.createClass({
   render: function() {
     return <div id="main-wrapper" className="container-fluid">
         <div className="row row-layout">
-          <div className="col-xs-12 col-lg-9 main">
+          <div className="col-xs-12 col-lg-10 offset-lg-1">
+            <div className="row">
+              <div className="col-xs-12 header">
+                NPM Notifier
+              </div>
+            </div>
             <div className="fullheight">
               {this.props.children}
             </div>

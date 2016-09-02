@@ -8,6 +8,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import reducer from './reducers';
 import {routes} from './routes';
 import './polyfills';
+import './styles/sass/main.scss';
 import 'font-awesome/scss/font-awesome.scss';
 
 const createStoreWithMiddleware = applyMiddleware(

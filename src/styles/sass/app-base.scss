@@ -25,6 +25,11 @@ body,
   background: $light1;
 }
 
+.header {
+  padding: 30px 10px 30px 10px;
+  background-color: #FFFFFF;
+}
+
 .row-layout,
 .sidebar {
   min-height: 100%;
@@ -37,9 +42,4 @@ body,
 input.form-control {
   box-shadow: 0 0 3px $light4 inset;
   background: $light1;
-}
-
-.highcharts-container {
-  width: auto !important;
-  max-width: 99% !important;
 }
