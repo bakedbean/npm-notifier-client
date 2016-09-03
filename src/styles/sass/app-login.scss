@@ -3,6 +3,21 @@
 //
 
 .login {
-  padding: 20px 10px 20px 10px;
-  background-color: #ff9900;
+  margin-bottom: 20px;
+  padding: 50px 10px 50px 10px;
+  background-color: #FF9900;
+  background-image: url("/img/npm-notifier-hero.png");
+  background-repeat: repeat-x;
+  color: #FFFFFF;
+
+  h3 {
+    line-height: 1.25em;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #FFFFFF;
+    color: #FF9900;
+  }
 }
