@@ -12,11 +12,13 @@ function setState(state, newState) {
   return state.merge(newState);
 }
 
-export default function patientReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch(action.type) {
-    case 'LOGIN_FULFILLED':
-      console.log(action.payload);
+    case 'LOGIN_PENDING':
       return state;
+
+    case 'LOGIN_FULFILLED':
+      return setState(state, state.set('code', action.payload.code));
 
     default: return state;
   }
