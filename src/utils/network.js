@@ -10,8 +10,7 @@ import {server, legacy} from './platform';
 const Network = resource => {
   let buildURL = ({ params, id, resource } = {}) => {
     let parameters = [
-      server(),
-      'api'
+      server()
     ];
 
     if (resource) parameters = parameters.concat([resource]);

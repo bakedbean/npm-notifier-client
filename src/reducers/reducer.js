@@ -14,7 +14,8 @@ function setState(state, newState) {
 
 export default function patientReducer(state = initialState, action) {
   switch(action.type) {
-    case 'LOGIN':
+    case 'LOGIN_FULFILLED':
+      console.log(action.payload);
       return state;
 
     default: return state;

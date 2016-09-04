@@ -1,5 +1,14 @@
 'use strict';
 
-export const login = () => ({
-  type: 'LOGIN'
-})
+import network from '../utils/network';
+
+export const login = (email) => ({
+  type: 'LOGIN',
+  payload: network().post({
+    resource: 'register'
+  }, {
+    email: email
+  })
+});
+
+
