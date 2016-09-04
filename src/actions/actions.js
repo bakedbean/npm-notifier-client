@@ -11,4 +11,14 @@ export const login = (email) => ({
   })
 });
 
+export const validate = (email, code) => ({
+  type: 'VALIDATE',
+  payload: network().post({
+    resource: 'validate'
+  }, {
+    email: email,
+    code: code
+  })
+});
+
 

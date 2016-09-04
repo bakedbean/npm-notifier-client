@@ -4,8 +4,8 @@ import * as Immutable from 'immutable';
 import fromJSOrdered from '../utils/fromjsordered';
 
 const initialState = Immutable.fromJS({
-  loading: {
-  }
+  auth: {},
+  loading: {}
 });
 
 function setState(state, newState) {
@@ -18,7 +18,20 @@ export default function reducer(state = initialState, action) {
       return state;
 
     case 'LOGIN_FULFILLED':
-      return setState(state, state.set('code', action.payload.code));
+      return setState(state, state.set('auth', Immutable.fromJS({
+        email: action.payload.email
+      })));
+
+    case 'VALIDATE_PENDING':
+      return setState(state, state.setIn(['loading'], Immutable.fromJS({
+        validation: true
+      })));
+
+    case 'VALIDATE_FULFILLED':
+      localStorage.setItem('token', action.payload.token);
+      return setState(state, state.setIn(['loading'], Immutable.fromJS({
+        validation: false
+      })));
 
     default: return state;
   }
