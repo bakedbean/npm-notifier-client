@@ -5,6 +5,12 @@ import {connect} from 'react-redux';
 import {actions} from '../actions';
 
 export const Dashboard = React.createClass({
+  componentWillMount: function() {
+    this.props.dashboard();
+  },
+  componentWillReceiveProps: function() {
+    this.props.dashboard();
+  },
   render: function() {
     return <div>
       <h1>Dashboard</h1>

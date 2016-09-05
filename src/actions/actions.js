@@ -21,4 +21,12 @@ export const validate = (email, code) => ({
   })
 });
 
+export const dashboard = () => ({
+  type: 'DASHBOARD',
+  payload: network().get({
+    resource: 'api/dashboard',
+    params: '?token=' + localStorage.getItem('token')
+  })
+});
+
 

@@ -5,7 +5,11 @@ import fromJSOrdered from '../utils/fromjsordered';
 
 const initialState = Immutable.fromJS({
   auth: {},
-  loading: {}
+  packages: [],
+  loading: {
+    login: false,
+    dashboard: false
+  }
 });
 
 function setState(state, newState) {
@@ -29,9 +33,13 @@ export default function reducer(state = initialState, action) {
 
     case 'VALIDATE_FULFILLED':
       localStorage.setItem('token', action.payload.token);
-      return setState(state, state.setIn(['loading'], Immutable.fromJS({
-        validation: false
-      })));
+      window.location = '/dashboard';
+
+    case 'DASHBOARD_PENDING':
+      return state;
+
+    case 'DASHBOARD_FULFILLED':
+      return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
 
     default: return state;
   }
