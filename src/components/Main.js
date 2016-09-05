@@ -9,15 +9,13 @@ import {Footer} from './Footer';
 export const Main = React.createClass({
   render: function() {
     return <div id="main-wrapper" className="container-fluid">
+        <Header /> 
         <div className="row row-layout">
-          <div className="col-xs-12 col-lg-10 offset-lg-1">
-            <Header /> 
-            <div>
-              {this.props.children}
-            </div>
-            <Footer /> 
+          <div className="col-xs-12">
+            {this.props.children}
           </div>
         </div>
+        <Footer /> 
       </div>;
   }
 });

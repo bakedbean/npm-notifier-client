@@ -5,24 +5,35 @@
 html {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  height: 100%;
 }
 
 body {
   -webkit-tap-highlight-color: transparent;
+  height: 100%;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
+#footer {
+  position:fixed;
+  padding: 10px 0 0 0;
+  bottom:0px;
+  height:100px;
+  width:100%;
+  background:#FFF;
+}
+
 html,
 body,
 #main-wrapper {
   width: 100%;
-  height: 100vh;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
   font-family: $noto;
-  background: $light1;
+  background: $orange;
 }
 
 .row-layout,
@@ -32,6 +43,15 @@ body,
 
 .fullheight {
   min-height: 100%;
+}
+
+.fill-height {
+  display: flex;
+  flex-direction: column;
+}
+
+.fill-height > div {
+  flex: 1;
 }
 
 input.form-control {
