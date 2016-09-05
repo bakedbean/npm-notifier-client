@@ -10,11 +10,7 @@ export const Main = React.createClass({
   render: function() {
     return <div id="main-wrapper" className="container-fluid">
         <Header /> 
-        <div className="row row-layout">
-          <div className="col-xs-12">
-            {this.props.children}
-          </div>
-        </div>
+        {this.props.children}
         <Footer /> 
       </div>;
   }
