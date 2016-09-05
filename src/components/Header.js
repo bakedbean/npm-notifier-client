@@ -24,7 +24,7 @@ export const Header = React.createClass({
           &nbsp;NPM Notifier
         </h4>
       </div>
-      <div className="col-lg-4 header">
+      <div className="col-lg-4 header hidden-sm-down">
         <ul>
           {!this.state.isLoggedIn && <li><a href="/signin">Sign In</a></li>}
           <li><a href="/about">About</a></li>

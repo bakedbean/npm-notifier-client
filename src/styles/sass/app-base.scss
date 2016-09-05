@@ -17,6 +17,10 @@ body {
   box-sizing: inherit;
 }
 
+#root {
+  height: 100%;
+}
+
 #footer {
   position:fixed;
   padding: 10px 0 0 0;
@@ -36,22 +40,13 @@ body,
   background: $orange;
 }
 
-.row-layout,
-.sidebar {
-  min-height: 100%;
+.content {
+  height: 100%;
+  margin: -100px 0 0 0;
 }
 
 .fullheight {
   min-height: 100%;
-}
-
-.fill-height {
-  display: flex;
-  flex-direction: column;
-}
-
-.fill-height > div {
-  flex: 1;
 }
 
 input.form-control {
