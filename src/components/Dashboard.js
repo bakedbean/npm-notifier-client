@@ -12,15 +12,25 @@ export const Dashboard = React.createClass({
     this.props.dashboard();
   },
   render: function() {
-    return <div>
-      <h1>Dashboard</h1>
+    return <div className="row dashboard">
+      <div className="col-xs-12">
+        <div className="dashboard-container">
+          <h2>Dashboard</h2>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 text-xs-center">
+            {this.props.packages.size < 1 && <button className="btn btn-lg">Add Package</button>}
+          </div>
+        </div>
+      </div>
     </div>;
   }
 });
 
 function mapStateToProps(state) {
   return {
-    auth: state.reducer.get('auth')
+    auth: state.reducer.get('auth'),
+    packages: state.reducer.get('packages')
   };
 }
 

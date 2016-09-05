@@ -3,6 +3,17 @@
 import React from 'react';
 
 export const Header = React.createClass({
+  getInitialState: function() {
+    return {
+      isLoggedIn: false
+    };
+  },
+  componentWillMount: function() {
+    this.setState({ isLoggedIn: localStorage.getItem('token') });
+  },
+  componentWillReceiveProps: function() {
+    this.setState({ isLoggedIn: localStorage.getItem('token') });
+  },
   render: function() {
     return <div className="row">
       <div className="col-xs-12 col-lg-8 header">
@@ -15,6 +26,7 @@ export const Header = React.createClass({
       </div>
       <div className="col-lg-4 header">
         <ul>
+          {!this.state.isLoggedIn && <li><a href="/signin">Sign In</a></li>}
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/pricing">Pricing</a></li>
