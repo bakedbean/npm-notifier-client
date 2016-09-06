@@ -13,7 +13,7 @@ export const LoginCode = React.createClass({
   },
   render: function() {
     return <div>
-      <h3>Please enter validation code below:</h3>
+      <h3>Please enter validation code:</h3>
 
       <input type="text" 
         name="code" 

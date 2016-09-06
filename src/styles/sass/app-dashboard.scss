@@ -3,14 +3,16 @@
 //
 
 .dashboard {
-  margin-bottom: 20px;
-  padding: 0 0 20px 0;
-
-  button {
+  button.start {
     width: 25%;
     margin-top: 5px;
     background-color: #FFFFFF;
     color: #FF9900;
+
+    &:hover {
+      background-color: #ffcc99;
+      color: #FFFFFF;
+    }
   }
 }
 

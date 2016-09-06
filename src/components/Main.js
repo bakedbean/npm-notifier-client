@@ -8,10 +8,11 @@ import {Footer} from './Footer';
 
 export const Main = React.createClass({
   render: function() {
+    console.log(this.props.location);
     return <div id="main-wrapper" className="container-fluid">
-        <Header /> 
+        {this.props.location.pathname !== '/signin' && <Header />}
         {this.props.children}
-        <Footer /> 
+        {this.props.location.pathname !== '/signin' && <Footer />}
       </div>;
   }
 });

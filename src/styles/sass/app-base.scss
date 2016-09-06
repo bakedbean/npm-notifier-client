@@ -17,6 +17,15 @@ body {
   box-sizing: inherit;
 }
 
+a {
+  color: $lightorange;
+}
+
+a:hover {
+  color: $orange;
+  text-decoration: underline !important;
+}
+
 #root {
   height: 100%;
 }
@@ -28,6 +37,10 @@ body {
   height:100px;
   width:100%;
   background:#FFF;
+
+  span {
+    color: $lightorange;
+  }
 }
 
 html,
@@ -43,6 +56,11 @@ body,
 .content {
   height: 100%;
   margin: -100px 0 0 0;
+}
+
+.content-signin {
+  height: 100%;
+  margin: 0 0 0 0;
 }
 
 .fullheight {

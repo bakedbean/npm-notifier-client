@@ -20,7 +20,7 @@ export const LoginEmail = React.createClass({
         value={this.state.email}
         onChange={this.handleChange} />
 
-        <button type="button" onClick={() => this.props.login(this.state.email)} className="btn btn-lg btn-default">Set Up</button>
+        <button type="button" onClick={() => this.props.login(this.state.email)} className="btn btn-lg btn-default">{this.props.signin ? "Request Sign In Code" : "Set Up"}</button>
     </div>;
   }
 });

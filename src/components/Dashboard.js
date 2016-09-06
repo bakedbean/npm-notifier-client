@@ -12,16 +12,16 @@ export const Dashboard = React.createClass({
     this.props.dashboard();
   },
   render: function() {
-    return <div className="row dashboard">
+    return <div className="row dashboard content">
       <div className="col-xs-12">
         <div className="dashboard-container">
           <h2>Dashboard</h2>
         </div>
-        <div className="row">
-          <div className="col-xs-12 text-xs-center">
-            {this.props.packages.size < 1 && <button className="btn btn-lg">Add Package</button>}
+        {this.props.packages.size < 1 && <div className="row content" style={{ margin: '-50px 0 0 0'}}>
+          <div className="col-xs-12 text-xs-center" style={{ float: 'none', margin: 'auto' }}>
+            <button className="btn btn-lg start" style={{ padding: '20px' }}>Add Package</button>
           </div>
-        </div>
+        </div>}
       </div>
     </div>;
   }
