@@ -23,3 +23,25 @@
     color: #FFFFFF;
   }
 }
+
+.add-panel {
+  margin: 0 0 0 0;
+  height: 75%;
+  border: 1px solid $lightorange;
+  padding: 10px;
+  background-color: $orange;
+  overflow: auto;
+
+  a {
+    &:hover {
+      color: #FFFFFF;
+    }
+    &:visited {
+      color: $lightorange;
+
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+}

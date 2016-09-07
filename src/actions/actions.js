@@ -29,4 +29,21 @@ export const dashboard = () => ({
   })
 });
 
+export const packageAdd = () => ({
+  type: 'PACKAGE_ADD'
+});
 
+export const packageRemove = ( index ) => ({
+  type: 'PACKAGE_REMOVE',
+  index: index
+});
+
+export const packageUpdate = ( index, name ) => ({
+  type: 'PACKAGE_UPDATE',
+  index: index,
+  name: name
+});
+
+export const packagesReset = () => ({
+  type: 'PACKAGES_RESET'
+});
