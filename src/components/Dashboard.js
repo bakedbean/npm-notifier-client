@@ -24,7 +24,6 @@ export const Dashboard = React.createClass({
     }
   },
   render: function() {
-    console.log(this.props.packages.toJS());
     return <div className="row dashboard content">
       <div className="col-xs-12" style={{ paddingTop: '110px' }}>
         <div className="dashboard-container">

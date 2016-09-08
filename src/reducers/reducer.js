@@ -72,9 +72,12 @@ export default function reducer(state = initialState, action) {
       }));
 
     case 'DELETE_PACKAGE_FROM_API_FULFILLED':
-      state = setState(state, state.set('savedPackages', fromJSOrdered(action.payload.packages)));
-      state = setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
-      return setState(state, state.setIn(['loading', 'packages'], false));
+      return setState(state, state.withMutations(map => {
+        map
+          .setIn(['loading', 'packages'], false)
+          .set('savedPackages', fromJSOrdered(action.payload.packages))
+          .set('packages', fromJSOrdered(action.payload.packages));
+      }));
 
     default: return state;
   }
