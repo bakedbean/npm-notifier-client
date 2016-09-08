@@ -3,6 +3,8 @@
 //
 
 .dashboard {
+  color: #FFFFFF;
+
   button.start {
     width: 25%;
     margin-top: 5px;
@@ -14,23 +16,6 @@
       color: #FFFFFF;
     }
   }
-}
-
-.dashboard-container {
-  padding: 10px;
-
-  h2 {
-    color: #FFFFFF;
-  }
-}
-
-.add-panel {
-  margin: 0 0 0 0;
-  height: 75%;
-  border: 1px solid $lightorange;
-  padding: 10px;
-  background-color: $orange;
-  overflow: auto;
 
   a {
     &:hover {
@@ -44,4 +29,23 @@
       }
     }
   }
+
+  .add-panel {
+    margin: 0 0 0 0;
+    height: 75%;
+    border: 1px solid $lightorange;
+    padding: 10px;
+    background-color: $orange;
+    overflow: auto;
+  }
 }
+
+.dashboard-container {
+  padding: 10px;
+
+  h2 {
+    color: #FFFFFF;
+  }
+}
+
+

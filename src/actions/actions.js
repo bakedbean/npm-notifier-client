@@ -47,3 +47,23 @@ export const packageUpdate = ( index, name ) => ({
 export const packagesReset = () => ({
   type: 'PACKAGES_RESET'
 });
+
+export const packagesSave = (packages) => ({
+  type: 'PACKAGES_SAVE',
+  payload: network().post({
+    resource: 'api/packages',
+    params: '?token=' + localStorage.getItem('token')
+  }, {
+    packages: JSON.stringify(packages.toJS())
+  })
+});
+
+export const deletePackageFromApi = (id) => ({
+  type: 'DELETE_PACKAGE_FROM_API',
+  payload: network().post({
+    resource: 'api/delete',
+    params: '?token=' + localStorage.getItem('token')
+  }, {
+    id: id
+  })
+});

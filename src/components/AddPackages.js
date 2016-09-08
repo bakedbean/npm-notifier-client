@@ -7,13 +7,16 @@ import {AddPackage} from './AddPackage';
 
 export const AddPackages = React.createClass({
   componentWillMount: function() {
-    if (this.props.packages.size < 1) {
-      this.props.packageAdd();
+    this.props.packageAdd();
+  },
+  componentWillReceiveProps: function(nextProps) {
+    if (nextProps.packages.size === nextProps.savedPackages.size) {
+      this.cancel();
     }
   },
   addMorePackages: function() {
     if (this.props.account === 'FREE' && this.props.packages.size === 5) {
-      alert("Please check out pricing options for more packages.");
+      alert("5 package limit reached. Please check out pricing options for more packages.");
     } else {
       this.props.packageAdd();
     }
@@ -30,23 +33,28 @@ export const AddPackages = React.createClass({
     this.props.toggleAddPackages();
   },
   validate: function() {
-    console.log(this.props.packages.toJS());
+    this.props.packagesSave(this.props.packages);
   },
   render: function() {
     return <div className="add-panel">
       <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
       {this.props.packages.map((k, i) => {
-        return <AddPackage 
-          {...this.props} 
-          key={i} 
-          index={i} 
-          name={k}
-          removePackage={this.removePackage} />
+        if (!k.get('_package').get('version')) {
+          return <AddPackage 
+            {...this.props} 
+            key={i} 
+            index={i} 
+            package={k}
+            removePackage={this.removePackage} />
+        }
       })}
       <div className="row">
-        <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center" style={{ padding: '20px 0 0 0' }}>
+        {!this.props.loading.get('packages') && <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center" style={{ padding: '20px 0 0 0' }}>
           <h1><a href="#" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>
-        </div>
+        </div>}
+        {this.props.loading.get('packages') && <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center" style={{ padding: '20px 0 0 0' }}>
+          <h1><a href="#"><i className="fa fa-spin fa-circle-o-notch"></i></a></h1>
+        </div>}
       </div>
     </div>;
   }
