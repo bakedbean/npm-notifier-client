@@ -61,9 +61,18 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.set('packages', state.get('savedPackages')));
 
     case 'PACKAGES_SAVE_PENDING':
+    case 'UPDATE_PACKAGE_PENDING':
       return setState(state, state.setIn(['loading', 'packages'], true));
 
     case 'PACKAGES_SAVE_FULFILLED':
+      return setState(state, state.withMutations(map => {
+        map
+          .setIn(['loading', 'packages'], false)
+          .set('savedPackages', fromJSOrdered(action.payload.packages))
+          .set('packages', fromJSOrdered(action.payload.packages));
+      }));
+
+    case 'UPDATE_PACKAGE_FULFILLED':
       return setState(state, state.withMutations(map => {
         map
           .setIn(['loading', 'packages'], false)

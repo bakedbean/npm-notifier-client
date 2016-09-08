@@ -17,7 +17,7 @@ export const Packages = React.createClass({
           <thead>
             <tr>
               <th></th>
-              <th>Package</th>
+              <th width="60%">Package</th>
               <th>Version</th>
             </tr>
           </thead>
