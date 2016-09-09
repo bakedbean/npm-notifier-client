@@ -1,8 +1,9 @@
 'use strict';
 
 import React from 'react';
+import autofill from 'react-autofill';
 
-export const LoginEmail = React.createClass({
+export const LoginEmail = autofill(React.createClass({
   getInitialState: function() {
     return {
       email: ''
@@ -23,4 +24,4 @@ export const LoginEmail = React.createClass({
         <button type="button" onClick={() => this.props.login(this.state.email)} className="btn btn-lg btn-default">{this.props.signin ? "Request Sign In Code" : "Set Up"}</button>
     </div>;
   }
-});
+}));

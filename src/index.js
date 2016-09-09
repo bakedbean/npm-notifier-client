@@ -8,7 +8,6 @@ import promiseMiddleware from 'redux-promise-middleware';
 import reducer from './reducers';
 import {routes} from './routes';
 import './polyfills';
-import autofill from 'react-autofill';
 import './styles/sass/main.scss';
 import 'font-awesome/scss/font-awesome.scss';
 
