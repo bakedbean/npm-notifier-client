@@ -14,7 +14,7 @@ export const LoginEmail = autofill(React.createClass({
   },
   render: function() {
     return <form>
-      <input type="text" 
+      <input type="email" 
         name="email" 
         placeholder="Email" 
         className="form-control" 
