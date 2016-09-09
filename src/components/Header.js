@@ -21,6 +21,12 @@ export const Header = React.createClass({
   render: function() {
     return <div className="row">
       <div className="col-xs-12 col-lg-8 header">
+        <div className="hidden-sm-up pull-xs-right" style={{ fontSize: '1.5em' }}>
+          <ul>
+            {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
+          </ul>
+        </div>
+
         <h4>
           <a href="/">
             <img src="img/logo.svg" height="50" />
@@ -28,6 +34,7 @@ export const Header = React.createClass({
           &nbsp;NPM Notifier
         </h4>
       </div>
+      
       <div className="col-lg-4 header hidden-sm-down">
         <ul>
           {!this.state.isLoggedIn && <li><a href="/signin"><i className="fa fa-sign-in"></i> Sign In</a></li>}
