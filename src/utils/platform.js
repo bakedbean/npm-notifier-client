@@ -9,7 +9,7 @@ export const platform = () => {
   return {
     dev: client() === 'http://localhost:8090',
     test: client() === 'about:blank//undefined',
-    production: client() === 'https://www.npmnotifier.com'
+    production: client() === 'https://www.npmnotifier.com' || client() === 'https://npmnotifier.com' || client() === 'http://www.npmnotifier.com' || client() === 'http://npmnotifier.com'
   }
 }
 
