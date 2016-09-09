@@ -11,6 +11,9 @@
   padding: 50px 10px 50px 10px;
   background-color: #FF9900;
   color: #FFFFFF;
+  display: -webkit-inline-box;
+           -webkit-box-pack: center;
+           -webkit-box-align: center;
 
   h3 {
     line-height: 1.25em;
