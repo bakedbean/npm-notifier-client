@@ -13,6 +13,10 @@ body {
   height: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
