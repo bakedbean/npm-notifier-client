@@ -13,7 +13,7 @@ export const LoginEmail = autofill(React.createClass({
     return this.setState({ email: event.currentTarget.value });
   },
   render: function() {
-    return <form>
+    return <form autocomplete="off">
       <input type="email" 
         name="email" 
         placeholder="Email" 
