@@ -13,7 +13,7 @@ export const LoginEmail = autofill(React.createClass({
     return this.setState({ email: event.currentTarget.value });
   },
   render: function() {
-    return <div>
+    return <form>
       <input type="text" 
         name="email" 
         placeholder="Email" 
@@ -22,6 +22,6 @@ export const LoginEmail = autofill(React.createClass({
         onChange={this.handleChange} />
 
         <button type="button" onClick={() => this.props.login(this.state.email)} className="btn btn-lg btn-default">{this.props.signin ? "Request Sign In Code" : "Set Up"}</button>
-    </div>;
+    </form>;
   }
 }));
