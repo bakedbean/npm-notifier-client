@@ -1,9 +1,8 @@
 'use strict';
 
 import React from 'react';
-import autofill from 'react-autofill';
 
-export const LoginEmail = autofill(React.createClass({
+export const LoginEmail = React.createClass({
   getInitialState: function() {
     return {
       email: ''
@@ -13,7 +12,7 @@ export const LoginEmail = autofill(React.createClass({
     return this.setState({ email: event.currentTarget.value });
   },
   render: function() {
-    return <form>
+    return <div>
       <input type="email" 
         name="email" 
         placeholder="Email" 
@@ -23,6 +22,6 @@ export const LoginEmail = autofill(React.createClass({
         onChange={this.handleChange} />
 
         <button type="button" onClick={() => this.props.login(this.state.email)} className="btn btn-lg btn-default">{this.props.signin ? "Request Sign In Code" : "Set Up"}</button>
-    </form>;
+    </div>;
   }
-}));
+});
