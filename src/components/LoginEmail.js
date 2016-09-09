@@ -10,7 +10,7 @@ export const LoginEmail = autofill(React.createClass({
     };
   },
   handleChange: function(event) {
-    return this.setState({ email: event.target.value });
+    return this.setState({ email: event.currentTarget.value });
   },
   render: function() {
     return <div>
