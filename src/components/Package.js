@@ -19,7 +19,7 @@ export const Package = React.createClass({
     this.props.updatePackage(this.props.data.get('_id'), pref);
   },
   render: function() {
-    return <div className="col-xs-12 col-lg-2 package">
+    return <div className="col-xs-12 col-sm-4 col-lg-2 package">
         <h5 style={{ display: 'inline' }}><a href="#" onClick={() => this.remove()}><i className="fa fa-times"></i></a> <a href="#" onClick={() => this.toggleEdit()}><i className="fa fa-pencil"></i></a></h5>
         <p style={{ fontWeight: 'bold' }}>{!this.state.editing && this.props.data.get('_package').get('name')} {this.props.data.get('_package').get('version')}</p>
         {this.state.editing && <div className="row">
