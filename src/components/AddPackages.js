@@ -36,25 +36,24 @@ export const AddPackages = React.createClass({
     this.props.packagesSave(this.props.packages);
   },
   render: function() {
-    return <div className="add-panel">
-      <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
-      {this.props.packages.map((k, i) => {
-        if (!k.get('_package').get('version')) {
-          return <AddPackage 
-            {...this.props} 
-            key={i} 
-            index={i} 
-            package={k}
-            removePackage={this.removePackage} />
-        }
-      })}
-      <div className="row">
-        {!this.props.loading.get('packages') && <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center" style={{ padding: '20px 0 0 0' }}>
-          <h1><a href="#" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>
-        </div>}
-        {this.props.loading.get('packages') && <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center" style={{ padding: '20px 0 0 0' }}>
-          <h1><a href="#"><i className="fa fa-spin fa-circle-o-notch"></i></a></h1>
-        </div>}
+    return <div className="row">
+      <div className="col-xs-12 col-lg-8 offset-lg-2 add-panel">
+        <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
+        {this.props.packages.map((k, i) => {
+          if (!k.get('_package').get('version')) {
+            return <AddPackage 
+              {...this.props} 
+              key={i} 
+              index={i} 
+              package={k}
+              removePackage={this.removePackage} />
+          }
+        })}
+
+        <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
+          {!this.props.loading.get('packages') && <h1><a href="#" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>}
+          {this.props.loading.get('packages') && <h1><a href="#"><i className="fa fa-spin fa-circle-o-notch"></i></a></h1>}
+        </div>
       </div>
     </div>;
   }

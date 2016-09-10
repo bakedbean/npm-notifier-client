@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import moment from 'moment';
 
 export const Package = React.createClass({
   getInitialState: function() {
@@ -18,12 +19,9 @@ export const Package = React.createClass({
     this.props.updatePackage(this.props.data.get('_id'), pref);
   },
   render: function() {
-    return <tr>
-      <td style={{ textAlign: 'right' }}>
-        <h5><a href="#" onClick={() => this.remove()}><i className="fa fa-times"></i></a> <a href="#" onClick={() => this.toggleEdit()}><i className="fa fa-pencil"></i></a></h5>
-      </td>
-      <td>
-        {!this.state.editing && this.props.data.get('_package').get('name')}
+    return <div className="col-xs-12 col-lg-2 package">
+        <h5 style={{ display: 'inline' }}><a href="#" onClick={() => this.remove()}><i className="fa fa-times"></i></a> <a href="#" onClick={() => this.toggleEdit()}><i className="fa fa-pencil"></i></a></h5>
+        <p style={{ fontWeight: 'bold' }}>{!this.state.editing && this.props.data.get('_package').get('name')} {this.props.data.get('_package').get('version')}</p>
         {this.state.editing && <div className="row">
           <div className="col-xs-4">
             <input type="checkbox"
@@ -44,8 +42,8 @@ export const Package = React.createClass({
               onChange={this.handleChange.bind(this, 'sms')} /> SMS
           </div>
         </div>}
-      </td>
-      <td>{this.props.data.get('_package').get('version')}</td>
-    </tr>;
+        <p><strong>Checked:</strong> {moment(this.props.data.get('_package').get('checked_at')).format('MM/DD/YY h:mm a')}</p>
+        <p><strong>Updated:</strong> {moment(this.props.data.get('_package').get('updated_at')).format('MM/DD/YY h:mm a')}</p>
+      </div>;
   }
 });

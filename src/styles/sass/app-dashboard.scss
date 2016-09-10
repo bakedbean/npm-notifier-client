@@ -31,12 +31,15 @@
   }
 
   .add-panel {
-    margin: 0 0 0 0;
-    height: 75%;
     border: 1px solid $lightorange;
     padding: 10px;
     background-color: $orange;
-    overflow: auto;
+  }
+
+  .package {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid $lightorange;
   }
 }
 

@@ -16,11 +16,11 @@ export const Dashboard = React.createClass({
     this.props.dashboard();
   },
   toggleAddPackages: function() {
-    if (this.props.savedPackages.size < 5) {
-      return this.setState({ adding: !this.state.adding });
-    } else {
+    if (this.props.account === 'FREE' && this.props.savedPackages.size >= 5) {
       alert('5 package limit reached. Please check out pricing for more options');
       return this.setState({ adding: false });
+    } else {
+      return this.setState({ adding: !this.state.adding });
     }
   },
   render: function() {

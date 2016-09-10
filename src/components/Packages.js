@@ -12,20 +12,7 @@ export const Packages = React.createClass({
     });
 
     return <div className="row">
-        <div className="col-lg-8 offset-lg-2">
-          <table className="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th></th>
-              <th width="60%">Package</th>
-              <th>Version</th>
-            </tr>
-          </thead>
-          <tbody>
-            {packages}
-          </tbody>
-        </table>
-      </div>
+      {packages}
     </div>;
   }
 });
