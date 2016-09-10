@@ -5,11 +5,13 @@ import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {AddPackages} from './AddPackages';
 import {Packages} from './Packages';
+import {Search} from './Search';
 
 export const Dashboard = React.createClass({
   getInitialState: function() {
     return {
-      adding: false
+      adding: false,
+      searching: false
     };
   },
   componentWillMount: function() {
@@ -23,11 +25,15 @@ export const Dashboard = React.createClass({
       return this.setState({ adding: !this.state.adding });
     }
   },
+  toggleSearch: function() {
+    this.setState({ searching: !this.state.searching });
+    if (this.state.searching) this.props.packagesReset();
+  },
   render: function() {
     return <div className="row dashboard content">
       <div className="col-xs-12" style={{ paddingTop: '110px' }}>
         <div className="dashboard-container">
-          <h2>Dashboard <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a></h2>
+          <h2>Dashboard <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a> <a href="#" onClick={() => this.toggleSearch()}><i className="fa fa-search"></i></a> {this.state.searching && <Search {...this.props} />}</h2>
           {this.props.packages.size > 0 && !this.state.adding && <Packages {...this.props} />}
         </div>
         {this.state.adding && <AddPackages {...this.props} toggleAddPackages={this.toggleAddPackages} />}

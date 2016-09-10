@@ -88,6 +88,11 @@ export default function reducer(state = initialState, action) {
           .set('packages', fromJSOrdered(action.payload.packages));
       }));
 
+    case 'SEARCH_PACKAGES':
+      return setState(state, state.set('packages', fromJSOrdered(state.get('savedPackages').filter(p => {
+        if (p.get('_package').get('name').search(action.needle) >= 0) return p;
+      }))));
+
     default: return state;
   }
 }

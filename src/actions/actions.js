@@ -2,7 +2,7 @@
 
 import network from '../utils/network';
 
-export const login = (email) => ({
+export const login = email => ({
   type: 'LOGIN',
   payload: network().post({
     resource: 'register'
@@ -33,7 +33,7 @@ export const packageAdd = () => ({
   type: 'PACKAGE_ADD'
 });
 
-export const packageRemove = ( index ) => ({
+export const packageRemove = index => ({
   type: 'PACKAGE_REMOVE',
   index: index
 });
@@ -69,7 +69,7 @@ export const updatePackage = ( id, pref ) => ({
   })
 });
 
-export const deletePackageFromApi = (id) => ({
+export const deletePackageFromApi = id => ({
   type: 'DELETE_PACKAGE_FROM_API',
   payload: network().post({
     resource: 'api/delete',
@@ -77,4 +77,9 @@ export const deletePackageFromApi = (id) => ({
   }, {
     id: id
   })
+});
+
+export const searchPackages = needle => ({
+  type: 'SEARCH_PACKAGES',
+  needle: needle
 });
