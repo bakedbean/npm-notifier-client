@@ -89,9 +89,18 @@ export default function reducer(state = initialState, action) {
       }));
 
     case 'SEARCH_PACKAGES':
-      return setState(state, state.set('packages', fromJSOrdered(state.get('savedPackages').filter(p => {
+      let packages = state.get('savedPackages').filter(p => {
         if (p.get('_package').get('name').search(action.needle) >= 0) return p;
-      }))));
+      });
+      if (packages.size < 1) {
+        packages = [{
+          _package: {
+            name: 'No matches found.',
+            version: ''
+          }
+        }];
+      }
+      return setState(state, state.set('packages', fromJSOrdered(packages)));
 
     default: return state;
   }
