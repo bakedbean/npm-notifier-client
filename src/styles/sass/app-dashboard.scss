@@ -6,7 +6,6 @@
   color: #FFFFFF;
 
   button.start {
-    width: 25%;
     margin-top: 5px;
     background-color: #FFFFFF;
     color: #FF9900;
@@ -33,6 +32,10 @@
   .search {
     font-size: .75em !important;
     font-weight: normal !important;
+  }
+
+  .start-container {
+    align-items: center;
   }
 
   .add-panel {

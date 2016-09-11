@@ -7,7 +7,7 @@ export const login = email => ({
   payload: network().post({
     resource: 'register'
   }, {
-    email: email
+    email: email.toLowerCase()
   })
 });
 
@@ -16,7 +16,7 @@ export const validate = (email, code) => ({
   payload: network().post({
     resource: 'validate'
   }, {
-    email: email,
+    email: email.toLowerCase(),
     code: code
   })
 });
@@ -81,5 +81,5 @@ export const deletePackageFromApi = id => ({
 
 export const searchPackages = needle => ({
   type: 'SEARCH_PACKAGES',
-  needle: needle
+  needle: needle.toLowerCase()
 });
