@@ -41,7 +41,7 @@ export const packageRemove = index => ({
 export const packageUpdate = ( index, name ) => ({
   type: 'PACKAGE_UPDATE',
   index: index,
-  name: name
+  name: name.toLowerCase()
 });
 
 export const packagesReset = () => ({
