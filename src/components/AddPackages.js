@@ -10,7 +10,7 @@ export const AddPackages = React.createClass({
     this.props.packageAdd();
   },
   componentWillReceiveProps: function(nextProps) {
-    if (nextProps.packages.size === nextProps.savedPackages.size) {
+    if (nextProps.packages.size === nextProps.savedPackages.size && !nextProps.packages.find(p => !p.get('_package').get('isValid'))) {
       this.cancel();
     }
   },
