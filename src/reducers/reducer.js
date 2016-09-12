@@ -51,13 +51,13 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
 
     case 'PACKAGE_ADD':
-      return setState(state, state.set('packages', state.get('packages').push(Immutable.fromJS({ _package: { name: '' }, isValid: true }))));
+      return setState(state, state.set('packages', state.get('packages').push(Immutable.fromJS({ _package: { name: '', isValid: true } }))));
 
     case 'PACKAGE_REMOVE':
       return setState(state, state.set('packages', state.get('packages').delete(action.index)));
 
     case 'PACKAGE_UPDATE':
-      return setState(state, state.setIn(['packages', action.index], Immutable.fromJS({ _package: { name: action.name }, isValid: true })));
+      return setState(state, state.setIn(['packages', action.index], Immutable.fromJS({ _package: { name: action.name, isValid: true } })));
 
     case 'PACKAGES_RESET':
       return setState(state, state.set('packages', state.get('savedPackages')));
@@ -70,7 +70,7 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.withMutations(map => {
         map
           .setIn(['loading', 'packages'], false)
-          .set('savedPackages', fromJSOrdered(action.payload.packages))
+          .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
           .set('packages', fromJSOrdered(action.payload.packages));
       }));
 
