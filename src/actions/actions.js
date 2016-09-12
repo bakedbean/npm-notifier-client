@@ -69,6 +69,11 @@ export const updatePackage = ( id, pref ) => ({
   })
 });
 
+export const trackDeletedPackage = id => ({
+  type: 'TRACK_DELETED_PACKAGE',
+  id: id
+});
+
 export const deletePackageFromApi = id => ({
   type: 'DELETE_PACKAGE_FROM_API',
   payload: network().post({
@@ -78,6 +83,13 @@ export const deletePackageFromApi = id => ({
     id: id
   })
 });
+
+export const deletePackageRequest = id => {
+  return (dispatch, getState) => {
+    dispatch(trackDeletedPackage(id));
+    return dispatch(deletePackageFromApi(id));
+  }
+};
 
 export const searchPackages = needle => ({
   type: 'SEARCH_PACKAGES',

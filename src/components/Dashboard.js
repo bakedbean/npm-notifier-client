@@ -37,7 +37,7 @@ export const Dashboard = React.createClass({
           {!this.state.adding && <Packages {...this.props} />}
           {this.state.adding && <AddPackages {...this.props} toggleAddPackages={this.toggleAddPackages} />}
         </div>}
-        {this.props.packages.size < 1 && !this.state.adding && <div className="row content start-container">
+        {this.props.packages.size < 1 && !this.state.adding && !this.props.loading.get('dashboard') && <div className="row content start-container">
           <div className="col-xs-12 col-lg-4 offset-lg-4 text-xs-center">
             <button className="btn btn-lg btn-block start" onClick={() => this.toggleAddPackages()} style={{ padding: '20px' }}>Add Package</button>
           </div>

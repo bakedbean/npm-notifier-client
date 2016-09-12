@@ -11,7 +11,8 @@ const initialState = Immutable.fromJS({
   loading: {
     login: false,
     dashboard: false,
-    packages: false
+    packages: false,
+    deleting: false
   }
 });
 
@@ -41,9 +42,10 @@ export default function reducer(state = initialState, action) {
       window.location = '/dashboard';
 
     case 'DASHBOARD_PENDING':
-      return state;
+      return setState(state, state.setIn(['loading', 'dashboard'], true));
 
     case 'DASHBOARD_FULFILLED':
+      state = setState(state, state.setIn(['loading', 'dashboard'], false));
       state = setState(state, state.set('account', action.payload.account));
       state = setState(state, state.set('savedPackages', fromJSOrdered(action.payload.packages)));
       return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
@@ -80,10 +82,13 @@ export default function reducer(state = initialState, action) {
           .set('packages', fromJSOrdered(action.payload.packages));
       }));
 
+    case 'TRACK_DELETED_PACKAGE':
+      return setState(state, state.setIn(['loading', 'deleting'], action.id));
+
     case 'DELETE_PACKAGE_FROM_API_FULFILLED':
       return setState(state, state.withMutations(map => {
         map
-          .setIn(['loading', 'packages'], false)
+          .setIn(['loading', 'deleting'], false)
           .set('savedPackages', fromJSOrdered(action.payload.packages))
           .set('packages', fromJSOrdered(action.payload.packages));
       }));
