@@ -16,5 +16,5 @@ export const platform = () => {
 export const server = () => {
   if (platform().dev) return 'http://localhost:8080';
   if (platform().test) return 'http://localhost:8181';
-  if (platform().production) return 'http://www.npmnotifier.com:8080';
+  if (platform().production) return 'https://www.npmnotifier.com';
 }
