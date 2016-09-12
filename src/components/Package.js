@@ -26,13 +26,13 @@ export const Package = React.createClass({
       </div>}
       {this.props.loading.get('deleting') !== this.props.data.get('_id') && <div>
           <h5 style={{ display: 'inline' }}><a href="#" onClick={() => this.remove()}><i className="fa fa-times"></i></a> <a href="#" onClick={() => this.toggleEdit()}><i className="fa fa-pencil"></i></a></h5>
-          <p style={{ fontWeight: 'bold' }}>{!this.state.editing && this.props.data.get('_package').get('name')} {this.props.data.get('_package').get('version')}</p>
+          <p style={{ fontWeight: 'bold' }}>{this.props.data.get('_package').get('name')} {this.props.data.get('_package').get('version')}</p>
           {this.state.editing && <div className="row">
             <div className="col-xs-4">
               <input type="checkbox"
                 value="active"
                 checked={!this.props.data.get('active')}
-                onChange={this.handleChange.bind(this, 'active')} /> Disable {this.props.data.get('_package').get('name')}
+                onChange={this.handleChange.bind(this, 'active')} /> Disable
             </div>
             <div className="col-xs-4">
               <input type="checkbox"
