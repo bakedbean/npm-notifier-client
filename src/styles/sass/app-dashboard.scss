@@ -5,14 +5,18 @@
 .dashboard {
   color: #FFFFFF;
 
-  button.start {
-    margin-top: 5px;
-    background-color: #FFFFFF;
-    color: #FF9900;
+  &.start {
+    align-items: center;
 
-    &:hover {
-      background-color: #ffcc99;
-      color: #FFFFFF;
+    button {
+      margin-top: 5px;
+      background-color: #FFFFFF;
+      color: #FF9900;
+
+      &:hover {
+        background-color: #ffcc99;
+        color: #FFFFFF;
+      }
     }
   }
 
@@ -32,11 +36,6 @@
   .search {
     font-size: .75em !important;
     font-weight: normal !important;
-  }
-
-  .start-container {
-    height: 90%;
-    align-items: center;
   }
 
   .add-panel {
