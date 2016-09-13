@@ -3,6 +3,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
+import classNames from 'classnames';
 
 export const Pricing = React.createClass({
   componentWillMount: function() {
@@ -15,6 +16,11 @@ export const Pricing = React.createClass({
   },
   componentWillUnmount: function() {
     this.handler.close();
+  },
+  componentDidUpdate: function() {
+    if (this.props.auth) {
+      this.props.history.push(null, '/login');
+    }
   },
   purchase: function(type) {
     if (type === 'free') {
@@ -32,20 +38,19 @@ export const Pricing = React.createClass({
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>NPM Notifier Pricing</h2>
         <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-2 option">
+          {this.props.account !== 'PAID' && <div className="col-xs-12 col-lg-4 offset-lg-2 option">
             <h3>Free Notifications</h3>
             <p>Track up to 5 packages.</p>
             <p>Packages checked <strong>weekly</strong>.</p>
             <p>Email notifications</p>
             <p className="price">$0</p>
             <button onClick={() => this.purchase('free')} className="btn btn-lg btn-default">Set Up</button>
-          </div>
-          <div className="col-xs-12 col-lg-4 option">
+          </div>}
+          <div className={classNames('col-xs-12', 'col-lg-4', 'option', { 'offset-lg-4': this.props.account === 'PAID' })}>
             <h3>Unlimited Notifications</h3>
             <p>Track <strong>unlimited</strong> packages.</p>
             <p>Packages checked <strong>daily</strong>.</p>
             <p>Email notifications</p>
-            <p>SMS Notifications</p>
             <p>Slack Notifications</p>
             <p className="price">$24.99/year</p>
             <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-lg btn-default">Set Up</button>
@@ -56,9 +61,11 @@ export const Pricing = React.createClass({
   }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-
+    auth: state.reducer.get('auth'),
+    account: state.reducer.get('account'),
+    history: ownProps.history
   };
 }
 

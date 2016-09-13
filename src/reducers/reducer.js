@@ -49,6 +49,7 @@ export default function reducer(state = initialState, action) {
     case 'DASHBOARD_FULFILLED':
       state = setState(state, state.setIn(['loading', 'dashboard'], false));
       state = setState(state, state.set('account', action.payload.account));
+      state = setState(state, state.set('lastPaid', action.payload.paid));
       state = setState(state, state.set('savedPackages', fromJSOrdered(action.payload.packages)));
       return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
 

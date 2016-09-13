@@ -1,0 +1,38 @@
+//
+/* App Account layout */
+//
+
+.account {
+  padding-top: 110px;
+  color: #FFFFFF;
+
+  button {
+    color: $orange;
+    border: 1px solid $orange;
+    background-color: #FFFFFF;
+    padding: 10px 30px 10px 30px;
+  }
+
+  .section {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid $lightorange;
+  }
+
+  .option {
+    padding: 10px;
+    margin-top: 10px;
+    background: #FFFFFF;
+    color: $orange;
+    text-align: center;
+    box-model: border-box;
+    border: 3px solid transparent;
+    background-clip:padding-box;
+
+    .price {
+      color: #999999;
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import {Link} from 'react-router';
 
 export const Header = React.createClass({
   getInitialState: function() {
@@ -25,6 +26,8 @@ export const Header = React.createClass({
           <ul>
             {!this.state.isLoggedIn && <li><a href="/signin"><i className="fa fa-sign-in"></i></a></li>}
             {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
+            {this.state.isLoggedIn && <li><Link to="/account"><i className="fa fa-user"></i></Link></li>}
+            {!this.state.isLoggedIn && <li><Link to="/pricing"><i className="fa fa-ellipsis-h"></i></Link></li>}
           </ul>
         </div>
 
@@ -41,7 +44,8 @@ export const Header = React.createClass({
           {!this.state.isLoggedIn && <li><a href="/signin"><i className="fa fa-sign-in"></i> Sign In</a></li>}
           {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i> Sign Out</a></li>}
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/pricing">Pricing</a></li>
+          {!this.props.account && <li><Link to="/pricing">Pricing</Link></li>}
+          {this.props.account && <li><Link to="/account">Account</Link></li>}
         </ul>
       </div>
     </div>;

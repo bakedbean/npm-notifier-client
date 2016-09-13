@@ -9,15 +9,17 @@ import {Footer} from './Footer';
 export const Main = React.createClass({
   render: function() {
     return <div id="main-wrapper" className="container-fluid">
-        {this.props.location.pathname !== '/signin' && <Header />}
+        {this.props.location.pathname !== '/signin' && <Header {...this.props} />}
         {this.props.children}
-        {this.props.location.pathname !== '/signin' && <Footer />}
+        {this.props.location.pathname !== '/signin' && <Footer {...this.props} />}
       </div>;
   }
 });
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    account: state.reducer.get('account')
+  };
 }
 
 export const MainContainer = connect(

@@ -41,7 +41,7 @@ export const Dashboard = React.createClass({
             <div className="dashboard-container">
 
               {!this.state.adding && 
-                <h2>Dashboard <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a> <a href="#" onClick={() => this.toggleSearch()}><i className="fa fa-search"></i></a> {this.state.searching && <Search {...this.props} />} <span style={{ fontSize: '.5em' }}>Tracking <strong>{this.props.packages.size}</strong> packages</span></h2>}
+                <h2>Dashboard <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a> <a href="#" onClick={() => this.toggleSearch()}><i className="fa fa-search"></i></a> {this.state.searching && <Search {...this.props} />} <span className="hidden-xs-down" style={{ fontSize: '.5em' }}>Tracking <strong>{this.props.packages.size}</strong> packages</span></h2>}
 
               {!this.state.adding && 
                 <Packages {...this.props} />}

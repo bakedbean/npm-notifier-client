@@ -1,13 +1,16 @@
 'use strict';
 
 import React from 'react';
+import {Link} from 'react-router';
+import moment from 'moment';
 
 export const Footer = React.createClass({
   render: function() {
     return <footer className="row hidden-sm-down" id="footer">
       <div className="col-xs-12 text-xs-center">
-        <h6>Track 5 packages for free.</h6><h6>Check out pricing for more options.</h6>
-        <span className="footer" style={{ fontSize: '.75em' }}><a href="">pricing</a> | <a href="">terms</a> | <a href="">privacy</a></span>
+        {this.props.account !== 'PAID' && <h6>Track 5 packages for free. Check out pricing for more options.</h6>}
+        <span className="footer" style={{ fontSize: '.75em' }}>{this.props.account === 'PAID' ? <Link to="/account">Account</Link> : <Link to="/pricing">Pricing</Link>} | <a href="">Terms</a> | <a href="">Privacy</a></span>
+        {this.props.account === 'PAID' && <div style={{ fontSize: '.75em' }}>Copyright NPM Notifier {moment().format('YYYY')}</div>}
       </div>
     </footer>;
   }
