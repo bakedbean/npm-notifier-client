@@ -24,7 +24,7 @@ export const Pricing = React.createClass({
       handler.open({
         name: 'NPM Notifier',
         description: 'Unlimited Notifications',
-        amount: 24.99
+        amount: 2499
       });
     }
   },
