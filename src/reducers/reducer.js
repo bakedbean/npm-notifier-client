@@ -8,6 +8,7 @@ const initialState = Immutable.fromJS({
   account: '',
   packages: [],
   savedPackages: [],
+  contacted: false,
   loading: {
     login: false,
     dashboard: false,
@@ -109,6 +110,9 @@ export default function reducer(state = initialState, action) {
         }];
       }
       return setState(state, state.set('packages', fromJSOrdered(packages)));
+
+    case 'SEND_CONTACT_FULFILLED':
+      return setState(state, state.set('contacted', true));
 
     default: return state;
   }

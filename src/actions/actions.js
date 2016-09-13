@@ -104,3 +104,14 @@ export const purchaseUnlimited = ( token ) => ({
     token: JSON.stringify(token)
   })
 });
+
+export const sendContact = ( name, email, message ) => ({
+  type: 'SEND_CONTACT',
+  payload: network().post({
+    resource: 'contact'
+  }, {
+    name: name,
+    email: email,
+    message: message
+  })
+});

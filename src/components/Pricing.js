@@ -8,7 +8,7 @@ import classNames from 'classnames';
 export const Pricing = React.createClass({
   componentWillMount: function() {
     this.handler = StripeCheckout.configure({
-      key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
+      key: 'pk_live_wwU0CJij8yw3hoIP6i90YtB0',
       image: 'img/npm-notifier-logo.png',
       locale: 'auto',
       token: token => this.props.purchaseUnlimited(token)
