@@ -102,6 +102,6 @@ export const purchaseUnlimited = ( token ) => ({
     resource: 'unlimited',
     params: '?token=' + localStorage.getItem('token')
   }, {
-    token: token
+    token: JSON.stringify(token)
   })
 });
