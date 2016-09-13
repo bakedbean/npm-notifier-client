@@ -95,3 +95,13 @@ export const searchPackages = needle => ({
   type: 'SEARCH_PACKAGES',
   needle: needle.toLowerCase()
 });
+
+export const purchaseUnlimited = ( token ) => ({
+  type: 'PURCHASE_UNLIMITED',
+  payload: network().post({
+    resource: 'unlimited',
+    params: '?token=' + localStorage.getItem('token')
+  }, {
+    token: token
+  });
+});

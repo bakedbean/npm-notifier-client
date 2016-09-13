@@ -22,9 +22,11 @@ function setState(state, newState) {
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case 'PURCHASE_UNLIMITED_PENDING':
     case 'LOGIN_PENDING':
       return state;
 
+    case 'PURCHASE_UNLIMITED_FULFILLED':
     case 'LOGIN_FULFILLED':
       return setState(state, state.set('auth', Immutable.fromJS({
         email: action.payload.email

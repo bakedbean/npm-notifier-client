@@ -4,24 +4,25 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
 
-var handler = StripeCheckout.configure({
-  key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
-  image: 'img/npm-notifier-logo.png',
-  locale: 'auto',
-  token: function(token) {
-    console.log(token);
-  }
-});
-
 export const Pricing = React.createClass({
+  componentWillMount: function() {
+    this.handler = StripeCheckout.configure({
+      key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
+      image: 'img/npm-notifier-logo.png',
+      locale: 'auto',
+      token: function(token) {
+        this.props.purchaseUnlimited(token);
+      }
+    });
+  },
   componentWillUnmount: function() {
-    handler.close();
+    this.handler.close();
   },
   purchase: function(type) {
     if (type === 'free') {
       window.location = '/';
     } else {
-      handler.open({
+      this.handler.open({
         name: 'NPM Notifier',
         description: 'Unlimited Notifications',
         amount: 2499
