@@ -6,7 +6,7 @@ import {actions} from '../actions';
 
 var handler = StripeCheckout.configure({
   key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
-  image: 'img/logo.svg',
+  image: 'img/npm-notifier-logo.png',
   locale: 'auto',
   token: function(token) {
     console.log(token);
@@ -49,7 +49,7 @@ export const Pricing = React.createClass({
             <p>SMS Notifications</p>
             <p>Slack Notifications</p>
             <p className="price">$24.99/year</p>
-            <button id="unlimited" className="btn btn-lg btn-default">Set Up</button>
+            <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-lg btn-default">Set Up</button>
           </div>
         </div>
       </div>
