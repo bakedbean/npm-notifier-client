@@ -9,7 +9,7 @@ export const Footer = React.createClass({
     return <footer className="row hidden-sm-down" id="footer">
       <div className="col-xs-12 text-xs-center">
         {this.props.account !== 'PAID' && <h6>Track 5 packages for free. Check out pricing for more options.</h6>}
-        <span className="footer" style={{ fontSize: '.75em' }}>{this.props.account === 'PAID' ? <Link to="/account">Account</Link> : <Link to="/pricing">Pricing</Link>} | <a href="">Terms</a> | <a href="">Privacy</a></span>
+        <span className="footer" style={{ fontSize: '.75em' }}>{this.props.account === 'PAID' ? <Link to="/account">Account</Link> : <Link to="/pricing">Pricing</Link>} | <Link to="/terms">Terms</Link> | <Link to="/privacy">Privacy</Link></span>
         {this.props.account === 'PAID' && <div style={{ fontSize: '.75em' }}>Copyright NPM Notifier {moment().format('YYYY')}</div>}
       </div>
     </footer>;

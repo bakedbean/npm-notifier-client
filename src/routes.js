@@ -9,6 +9,8 @@ import {PricingContainer} from './components/Pricing';
 import {DashboardContainer} from './components/Dashboard';
 import {AccountContainer} from './components/Account';
 import {ContactContainer} from './components/Contact';
+import {Terms} from './components/Terms';
+import {Privacy} from './components/Privacy';
 import App from './components/App';
 
 function isLoggedIn(nextState, replace, callback) {
@@ -34,5 +36,7 @@ export const routes = <Route component={App}>
     <Route path="contact" component={ContactContainer}></Route>
     <Route path="account" component={AccountContainer} onEnter={authenticated}></Route>
     <Route path="dashboard" component={DashboardContainer} onEnter={authenticated}></Route>
+    <Route path="terms" component={Terms}></Route>
+    <Route path="privacy" component={Privacy}></Route>
   </Route>
 </Route>;
