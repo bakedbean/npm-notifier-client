@@ -99,8 +99,7 @@ export const searchPackages = needle => ({
 export const purchaseUnlimited = ( token ) => ({
   type: 'PURCHASE_UNLIMITED',
   payload: network().post({
-    resource: 'unlimited',
-    params: '?token=' + localStorage.getItem('token')
+    resource: 'unlimited'
   }, {
     token: JSON.stringify(token)
   })
