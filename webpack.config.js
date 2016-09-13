@@ -12,8 +12,8 @@ var config = getConfig({
   html: function(context) {
     return {
       'index.html': context.defaultTemplate({
-        title: 'NPM Notifier'
-        //head: "<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>"
+        title: 'NPM Notifier',
+        head: "<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'><script src='https://checkout.stripe.com/checkout.js'></script>"
       })
     }
   },

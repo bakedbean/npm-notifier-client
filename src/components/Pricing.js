@@ -4,7 +4,30 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
 
+var handler = StripeCheckout.configure({
+  key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
+  image: 'img/logo.svg',
+  locale: 'auto',
+  token: function(token) {
+    console.log(token);
+  }
+});
+
 export const Pricing = React.createClass({
+  componentWillUnmount: function() {
+    handler.close();
+  },
+  purchase: function(type) {
+    if (type === 'free') {
+      window.location = '/';
+    } else {
+      handler.open({
+        name: 'NPM Notifier',
+        description: 'Unlimited Notifications',
+        amount: 24.99
+      });
+    }
+  },
   render: function() {
     return <div className="row content pricing">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
@@ -13,20 +36,20 @@ export const Pricing = React.createClass({
           <div className="col-xs-12 col-lg-4 offset-lg-2 option">
             <h3>Free Notifications</h3>
             <p>Track up to 5 packages.</p>
-            <p>Packages checked weekly.</p>
+            <p>Packages checked <strong>weekly</strong>.</p>
             <p>Email notifications</p>
             <p className="price">$0</p>
-            <button className="btn btn-lg btn-default">Set Up</button>
+            <button onClick={() => this.purchase('free')} className="btn btn-lg btn-default">Set Up</button>
           </div>
-          <div className="col-xs-12 col-lg-4 option" style={{ marginLeft: '10px' }}>
+          <div className="col-xs-12 col-lg-4 option">
             <h3>Unlimited Notifications</h3>
-            <p>Track unlimited packages.</p>
-            <p>Packages checked daily.</p>
+            <p>Track <strong>unlimited</strong> packages.</p>
+            <p>Packages checked <strong>daily</strong>.</p>
             <p>Email notifications</p>
             <p>SMS Notifications</p>
             <p>Slack Notifications</p>
             <p className="price">$24.99/year</p>
-            <button className="btn btn-lg btn-default">Set Up</button>
+            <button id="unlimited" className="btn btn-lg btn-default">Set Up</button>
           </div>
         </div>
       </div>
