@@ -19,7 +19,7 @@ export const Pricing = React.createClass({
   },
   componentDidUpdate: function() {
     if (this.props.auth) {
-      this.props.history.push(null, '/login');
+      this.props.history.push('/login');
     }
   },
   purchase: function(type) {
@@ -62,6 +62,7 @@ export const Pricing = React.createClass({
 });
 
 function mapStateToProps(state, ownProps) {
+  console.log(ownProps);
   return {
     auth: state.reducer.get('auth'),
     account: state.reducer.get('account'),
