@@ -10,9 +10,7 @@ export const Pricing = React.createClass({
       key: 'pk_test_oo1VGh8orwDh28RhRlPsVhcr',
       image: 'img/npm-notifier-logo.png',
       locale: 'auto',
-      token: function(token) {
-        this.props.purchaseUnlimited(token);
-      }
+      token: token => this.props.purchaseUnlimited(token)
     });
   },
   componentWillUnmount: function() {
