@@ -24,7 +24,7 @@ export const Header = React.createClass({
       <div className="col-xs-12 col-lg-8 header">
         <div className="hidden-sm-up pull-xs-right" style={{ fontSize: '1.5em' }}>
           <ul>
-            {!this.state.isLoggedIn && <li><a href="/signin"><i className="fa fa-sign-in"></i></a></li>}
+            {!this.state.isLoggedIn && <li><Link to="/signin"><i className="fa fa-sign-in"></i></Link></li>}
             {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
             <li><Link to="/contact"><i className="fa fa-envelope-o"></i></Link></li>
             {!this.state.isLoggedIn && <li><Link to="/pricing"><i className="fa fa-ellipsis-h"></i></Link></li>}
@@ -41,7 +41,7 @@ export const Header = React.createClass({
       
       <div className="col-lg-4 header hidden-sm-down">
         <ul>
-          {!this.state.isLoggedIn && <li><a href="/signin"><i className="fa fa-sign-in"></i> Sign In</a></li>}
+          {!this.state.isLoggedIn && <li><Link to="/signin"><i className="fa fa-sign-in"></i> Sign In</Link></li>}
           {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i> Sign Out</a></li>}
           <li><Link to="/contact">Contact</Link></li>
           {!this.props.account && <li><Link to="/pricing">Pricing</Link></li>}

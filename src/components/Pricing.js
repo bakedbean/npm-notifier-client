@@ -3,6 +3,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
+import {Link} from 'react-router';
 import classNames from 'classnames';
 
 export const Pricing = React.createClass({
@@ -43,6 +44,7 @@ export const Pricing = React.createClass({
             <p>Track up to 5 packages.</p>
             <p>Packages checked <strong>weekly</strong>.</p>
             <p>Email notifications</p>
+            <p>&nbsp;</p>
             <p className="price">$0</p>
             <button onClick={() => this.purchase('free')} className="btn btn-lg btn-default">Set Up</button>
           </div>}
@@ -54,6 +56,11 @@ export const Pricing = React.createClass({
             <p>Slack Notifications</p>
             <p className="price">$24.99/year</p>
             <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-lg btn-default">Set Up</button>
+          </div>
+        </div>
+        <div className="row hidden-sm-up" style={{ margin: '10px 0 10px 0' }}>
+          <div className="col-xs-12 text-xs-center">
+            <Link to="/terms">Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link>
           </div>
         </div>
       </div>
