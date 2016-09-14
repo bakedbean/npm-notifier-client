@@ -39,6 +39,11 @@ export const Account = React.createClass({
               onChange={this.handleChange.bind(this, 'email_pref')} /> Email
           </div>
         </div>
+        {this.props.account === 'FREE' && <div className="row">
+          <div className="col-xs-12 col-lg-6 offset-lg-3 section text-xs-center text-lg-center">
+            Upgrade to <Link to="/pricing">unlimited</Link> and setup Slack notifications
+          </div>
+        </div>}
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3">
             <button className="btn btn-lg btn-block" onClick={() => window.location = '/'}>Back to Dashboard</button>
