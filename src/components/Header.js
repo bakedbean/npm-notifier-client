@@ -31,11 +31,13 @@ export const Header = React.createClass({
           </ul>
         </div>
 
-        <h4>
-          <a href="/">
-            <img src="img/logo.svg" height="50" />
-          </a>
-          &nbsp;NPM Notifier
+        <h5 className="hidden-sm-up">
+          <a href="/"><img src="img/logo.svg" height="50" /></a>
+          &nbsp;NPM Notifier<span style={{ fontSize: '.5em' }}>(beta)</span>
+        </h5>
+        <h4 className="hidden-xs-down">
+          <a href="/"><img src="img/logo.svg" height="50" /></a>
+          &nbsp;NPM Notifier<span style={{ fontSize: '.5em' }}>(beta)</span>
         </h4>
       </div>
       
