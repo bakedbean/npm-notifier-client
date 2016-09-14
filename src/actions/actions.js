@@ -115,3 +115,13 @@ export const sendContact = ( name, email, message ) => ({
     message: message
   })
 });
+
+export const updateUser = pref => ({
+  type: 'UPDATE_USER',
+  payload: network().post({
+    resource: 'api/user',
+    params: '?token=' + localStorage.getItem('token')
+  }, {
+    pref: pref
+  })
+});

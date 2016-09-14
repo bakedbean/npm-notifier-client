@@ -2,11 +2,14 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+import {actions} from '../actions';
 import {Header} from './Header';
 import {Footer} from './Footer';
 
 export const Main = React.createClass({
+  componentWillMount: function() {
+    this.props.dashboard();
+  },
   render: function() {
     return <div id="main-wrapper" className="container-fluid">
         {this.props.location.pathname !== '/signin' && <Header {...this.props} />}

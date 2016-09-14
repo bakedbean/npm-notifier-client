@@ -6,6 +6,9 @@ import fromJSOrdered from '../utils/fromjsordered';
 const initialState = Immutable.fromJS({
   auth: {},
   account: '',
+  email_pref: false,
+  slack_pref: false,
+  slack_webhook_url: '',
   packages: [],
   savedPackages: [],
   contacted: false,
@@ -13,6 +16,7 @@ const initialState = Immutable.fromJS({
     login: false,
     dashboard: false,
     packages: false,
+    account: false,
     deleting: false
   }
 });
@@ -51,6 +55,9 @@ export default function reducer(state = initialState, action) {
       state = setState(state, state.setIn(['loading', 'dashboard'], false));
       state = setState(state, state.set('account', action.payload.account));
       state = setState(state, state.set('lastPaid', action.payload.paid));
+      state = setState(state, state.set('slack_webhook_url', action.payload.slack_webhook_url));
+      state = setState(state, state.set('email_pref', action.payload.email_pref));
+      state = setState(state, state.set('slack_pref', action.payload.slack_pref));
       state = setState(state, state.set('savedPackages', fromJSOrdered(action.payload.packages)));
       return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
 
@@ -113,6 +120,15 @@ export default function reducer(state = initialState, action) {
 
     case 'SEND_CONTACT_FULFILLED':
       return setState(state, state.set('contacted', true));
+
+    case 'UPDATE_USER_FULFILLED':
+      return setState(state, state.withMutations(map => {
+        map
+          .setIn(['loading', 'account'], false)
+          .set('email_pref', action.payload.email_pref)
+          .set('slack_pref', action.payload.slack_pref)
+          .set('slack_webhook_url', action.payload.slack_webhook_url)
+      }));
 
     default: return state;
   }

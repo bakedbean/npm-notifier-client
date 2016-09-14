@@ -15,9 +15,6 @@ export const Dashboard = React.createClass({
       searching: false
     };
   },
-  componentWillMount: function() {
-    this.props.dashboard();
-  },
   toggleAddPackages: function() {
     if (this.props.account === 'FREE' && this.props.savedPackages.size >= 5) {
       alert('5 package limit reached. Please check out pricing for more options');

@@ -7,6 +7,10 @@ import {Link} from 'react-router';
 import moment from 'moment';
 
 export const Account = React.createClass({
+  handleChange: function(pref) {
+    console.log(pref);
+    this.props.updateUser(pref);
+  },
   render: function() {
     return <div className="row content account">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
@@ -27,6 +31,15 @@ export const Account = React.createClass({
           </div>
         </div>
         <div className="row">
+          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
+            <strong>Preferences:</strong>&nbsp;
+            <input type="checkbox" 
+              value="email_pref"
+              checked={this.props.email_pref}
+              onChange={this.handleChange.bind(this, 'email_pref')} /> Email
+          </div>
+        </div>
+        <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3">
             <button className="btn btn-lg btn-block" onClick={() => window.location = '/'}>Back to Dashboard</button>
           </div>
@@ -40,6 +53,9 @@ function mapStateToProps(state) {
   return {
     account: state.reducer.get('account'),
     lastPaid: state.reducer.get('lastPaid'),
+    slack_webhook_url: state.reducer.get('slack_webhook_url'),
+    email_pref: state.reducer.get('email_pref'),
+    slack_pref: state.reducer.get('slack_pref'),
     packages: state.reducer.get('savedPackages')
   };
 }
