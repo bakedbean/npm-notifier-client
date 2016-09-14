@@ -11,6 +11,11 @@ export const LoginCode = React.createClass({
   handleChange: function(event) {
     return this.setState({ code: event.target.value });
   },
+  handleKeypress: function(event) {
+    if (event.key === 'Enter') {
+      this.props.validate(this.props.auth.get('email'), this.state.code);
+    }
+  },
   render: function() {
     return <div>
       <h3>Please enter validation code:</h3>
@@ -20,6 +25,7 @@ export const LoginCode = React.createClass({
         placeholder="Code" 
         className="form-control" 
         value={this.state.code}
+        onKeyPress={this.handleKeypress}
         onChange={this.handleChange} />
 
       <button type="button" onClick={() => this.props.validate(this.props.auth.get('email'), this.state.code)} className="btn btn-lg btn-default">Login</button>

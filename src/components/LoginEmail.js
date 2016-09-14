@@ -16,9 +16,12 @@ export const LoginEmail = React.createClass({
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return (re.test(this.state.email));
   },
-  reValidate: function() {
+  reValidate: function(e) {
     if (!this.state.valid && this.validate()) {
       this.setState({ valid: true });
+    }
+    if (e.key === 'Enter') {
+      this.props.login(this.state.email);
     }
   },
   doLogin: function() {
@@ -35,7 +38,7 @@ export const LoginEmail = React.createClass({
         placeholder="Email" 
         className="form-control" 
         value={this.state.email}
-        onKeyPress={this.reValidate()}
+        onKeyPress={this.reValidate}
         onBlur={this.handleChange}
         onChange={this.handleChange} />
 
