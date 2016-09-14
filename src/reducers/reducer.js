@@ -121,6 +121,12 @@ export default function reducer(state = initialState, action) {
     case 'SEND_CONTACT_FULFILLED':
       return setState(state, state.set('contacted', true));
 
+    case 'UPDATE_PREF':
+      return setState(state, state.set(action.pref, action.value));
+
+    case 'UPDATE_USER_PENDING':
+      return setState(state, state.setIn(['loading', 'account'], true));
+
     case 'UPDATE_USER_FULFILLED':
       return setState(state, state.withMutations(map => {
         map

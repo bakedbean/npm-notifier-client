@@ -5,11 +5,18 @@ import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Link} from 'react-router';
 import moment from 'moment';
+import classNames from 'classNames';
 
 export const Account = React.createClass({
-  handleChange: function(pref) {
-    console.log(pref);
-    this.props.updateUser(pref);
+  handleChange: function(pref, event) {
+    if (event.currentTarget.type === 'checkbox') {
+      this.props.updatePref(pref, !this.props[pref]);
+    } else {
+      this.props.updatePref(pref, event.currentTarget.value);
+    }
+  },
+  save: function() {
+    this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url);
   },
   render: function() {
     return <div className="row content account">
@@ -32,11 +39,26 @@ export const Account = React.createClass({
         </div>
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Preferences:</strong>&nbsp;
-            <input type="checkbox" 
-              value="email_pref"
-              checked={this.props.email_pref}
-              onChange={this.handleChange.bind(this, 'email_pref')} /> Email
+            <strong>Notification Preferences:</strong>
+            <p>
+              <span className="preference"><input type="checkbox" 
+                value="email_pref"
+                checked={this.props.email_pref}
+                onChange={this.handleChange.bind(this, 'email_pref')} /> Email Notifications</span>
+              {this.props.account === 'PAID' && 
+                <span className="preference"><input type="checkbox" 
+                  value="slack_pref" 
+                  checked={this.props.slack_pref} 
+                  onChange={this.handleChange.bind(this, 'slack_pref')} /> Slack Notifications</span>}
+            </p>
+            {this.props.slack_pref && <p>Slack Webhook URL:<br/>
+              <input type="text" 
+                className="form-control" 
+                name="slack_webhook_url" 
+                placeholder="https://hooks.slack.com/services/..."
+                value={this.props.slack_webhook_url}
+                onChange={this.handleChange.bind(this, 'slack_webhook_url')} />
+            </p>}
           </div>
         </div>
         {this.props.account === 'FREE' && <div className="row">
@@ -45,8 +67,9 @@ export const Account = React.createClass({
           </div>
         </div>}
         <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3">
-            <button className="btn btn-lg btn-block" onClick={() => window.location = '/'}>Back to Dashboard</button>
+          <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center text-lg-center">
+            <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>
+            <button className="btn btn-lg" onClick={() => window.location = '/'}><span className="hidden-xs-down">Back to Dashboard</span><span className="hidden-sm-up"><i className="fa fa-dashboard"></i></span></button>
           </div>
         </div>
       </div>
@@ -56,6 +79,7 @@ export const Account = React.createClass({
 
 function mapStateToProps(state) {
   return {
+    loading: state.reducer.get('loading'),
     account: state.reducer.get('account'),
     lastPaid: state.reducer.get('lastPaid'),
     slack_webhook_url: state.reducer.get('slack_webhook_url'),

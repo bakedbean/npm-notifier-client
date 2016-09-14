@@ -116,12 +116,20 @@ export const sendContact = ( name, email, message ) => ({
   })
 });
 
-export const updateUser = pref => ({
+export const updatePref = ( pref, value ) => ({
+  type: 'UPDATE_PREF',
+  pref: pref,
+  value: value
+});
+
+export const updateUser = (email, slack, webhook) => ({
   type: 'UPDATE_USER',
   payload: network().post({
     resource: 'api/user',
     params: '?token=' + localStorage.getItem('token')
   }, {
-    pref: pref
+    email_pref: email,
+    slack_pref: slack,
+    slack_webhook_url: webhook
   })
 });
