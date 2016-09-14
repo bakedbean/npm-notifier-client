@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Link} from 'react-router';
 import moment from 'moment';
-import classNames from 'classNames';
 
 export const Account = React.createClass({
   handleChange: function(pref, event) {
