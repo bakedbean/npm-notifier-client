@@ -19,6 +19,9 @@ const initialState = Immutable.fromJS({
     upload: false,
     account: false,
     deleting: false
+  },
+  alerts: {
+    login: false
   }
 });
 
@@ -34,6 +37,7 @@ export default function reducer(state = initialState, action) {
 
     case 'PURCHASE_UNLIMITED_FULFILLED':
     case 'LOGIN_FULFILLED':
+      state = setState(state, state.setIn(['alerts', 'login'], false));
       return setState(state, state.set('auth', Immutable.fromJS({
         email: action.payload.email
       })));
@@ -46,8 +50,10 @@ export default function reducer(state = initialState, action) {
     case 'VALIDATE_FULFILLED':
       if (action.payload.token) {
         localStorage.setItem('token', action.payload.token);
+        window.location = '/dashboard';
+      } else {
+        return setState(state, state.setIn(['alerts', 'login'], true));
       }
-      window.location = '/dashboard';
 
     case 'DASHBOARD_PENDING':
       return setState(state, state.setIn(['loading', 'dashboard'], true));
@@ -144,8 +150,6 @@ export default function reducer(state = initialState, action) {
       if (action.payload.message) {
         return setState(state, state.setIn(['loading', 'upload'], false));
       }
-
-      console.log(action.payload);
 
       return setState(state, state.withMutations(map => {
         map
