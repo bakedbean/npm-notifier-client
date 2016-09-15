@@ -51,7 +51,7 @@ export const AddPackages = React.createClass({
         })}
 
         <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
-          {!this.props.loading.get('packages') && <h1><a href="#" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>}
+          {!this.props.loading.get('packages') && <h1><a href="#" id="save" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>}
           {this.props.loading.get('packages') && <h1><a href="#"><i className="fa fa-spin fa-circle-o-notch"></i></a></h1>}
         </div>
       </div>
