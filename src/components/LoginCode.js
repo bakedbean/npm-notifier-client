@@ -18,7 +18,8 @@ export const LoginCode = React.createClass({
   },
   render: function() {
     return <div>
-      <h3>Please enter validation code:</h3>
+      <h3>A login code has been sent to the email you provided.</h3>
+      <h3>Please enter it below to continue.</h3>
 
       <input type="text" 
         name="code" 
