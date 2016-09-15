@@ -133,3 +133,12 @@ export const updateUser = (email, slack, webhook) => ({
     slack_webhook_url: webhook
   })
 });
+
+export const uploadFile = (url, file) => ({
+  type: 'UPLOAD_FILE',
+  payload: fetch(url, {
+    method: 'POST',
+    body: file
+  }).then(response => response.json())
+
+});

@@ -45,6 +45,7 @@ export const Pricing = React.createClass({
             <p>Packages checked <strong>weekly</strong>.</p>
             <p>Email notifications</p>
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
             <p className="price">$0</p>
             <button onClick={() => this.purchase('free')} className="btn btn-lg btn-default">Set Up</button>
           </div>}
@@ -52,6 +53,7 @@ export const Pricing = React.createClass({
             <h3>Unlimited Notifications</h3>
             <p>Track <strong>unlimited</strong> packages.</p>
             <p>Packages checked <strong>daily</strong>.</p>
+            <p>Upload package.json</p>
             <p>Email notifications</p>
             <p>Slack Notifications</p>
             <p className="price">$24.99/year</p>
@@ -69,7 +71,6 @@ export const Pricing = React.createClass({
 });
 
 function mapStateToProps(state, ownProps) {
-  console.log(ownProps);
   return {
     auth: state.reducer.get('auth'),
     account: state.reducer.get('account'),

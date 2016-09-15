@@ -12,6 +12,7 @@ export const Dashboard = React.createClass({
   getInitialState: function() {
     return {
       adding: false,
+      uploading: false,
       searching: false
     };
   },
@@ -20,8 +21,11 @@ export const Dashboard = React.createClass({
       alert('5 package limit reached. Please check out pricing for more options');
       return this.setState({ adding: false });
     } else {
-      return this.setState({ adding: !this.state.adding });
+      return this.setState({ adding: !this.state.adding, uploading: false });
     }
+  },
+  toggleFileUpload: function() {
+    this.setState({ adding: !this.state.adding, uploading: !this.state.uploading });
   },
   toggleSearch: function() {
     this.setState({ searching: !this.state.searching });
@@ -29,7 +33,7 @@ export const Dashboard = React.createClass({
   },
   render: function() {
     if (this.props.packages.size < 1 && !this.state.adding && !this.props.loading.get('dashbaord')) {
-      return <DashboardStart {...this.props} toggleAddPackages={this.toggleAddPackages} />;
+      return <DashboardStart {...this.props} toggleAddPackages={this.toggleAddPackages} toggleFileUpload={this.toggleFileUpload} />;
     } else {
       return <div className="row dashboard content">
         <div className="col-xs-12" style={{ paddingTop: '110px' }}>
@@ -38,13 +42,13 @@ export const Dashboard = React.createClass({
             <div className="dashboard-container">
 
               {!this.state.adding && 
-                <h2>Dashboard <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a> <a href="#" onClick={() => this.toggleSearch()}><i className="fa fa-search"></i></a> {this.state.searching && <Search {...this.props} />} <span className="hidden-xs-down" style={{ fontSize: '.5em' }}>Tracking <strong>{this.props.packages.size}</strong> packages</span></h2>}
+                <h2>Dashboard {this.props.account === 'PAID' && <a href="#" onClick={() => this.toggleFileUpload()}><i className="fa fa-cloud-upload"></i></a>} <a href="#" onClick={() => this.toggleAddPackages()}><i className="fa fa-plus"></i></a> <a href="#" onClick={() => this.toggleSearch()}><i className="fa fa-search"></i></a> {this.state.searching && <Search {...this.props} />} <span className="hidden-xs-down" style={{ fontSize: '.5em' }}>Tracking <strong>{this.props.packages.size}</strong> packages</span></h2>}
 
               {!this.state.adding && 
                 <Packages {...this.props} />}
 
               {this.state.adding && 
-                <AddPackages {...this.props} toggleAddPackages={this.toggleAddPackages} />}
+                <AddPackages {...this.props} toggleAddPackages={this.toggleAddPackages} uploading={this.state.uploading} />}
             </div>}
         </div>
       </div>;

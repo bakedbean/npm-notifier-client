@@ -40,12 +40,12 @@ export const Package = React.createClass({
                 checked={this.props.data.get('email')}
                 onChange={this.handleChange.bind(this, 'email')} /> Email
             </div>
-            <div className="col-xs-4">
+            {this.props.account === 'PAID' && <div className="col-xs-4">
               <input type="checkbox"
                 value="slack" 
                 checked={this.props.data.get('slack')}
                 onChange={this.handleChange.bind(this, 'slack')} /> Slack
-            </div>
+            </div>}
           </div>}
           <p><strong>Checked:</strong> {moment(this.props.data.get('_package').get('checked_at')).format('MM/DD/YY h:mm a')}</p>
           <p><strong>Updated:</strong> {moment(this.props.data.get('_package').get('updated_at')).format('MM/DD/YY h:mm a')}</p>

@@ -16,6 +16,7 @@ const initialState = Immutable.fromJS({
     login: false,
     dashboard: false,
     packages: false,
+    upload: false,
     account: false,
     deleting: false
   }
@@ -134,6 +135,23 @@ export default function reducer(state = initialState, action) {
           .set('email_pref', action.payload.email_pref)
           .set('slack_pref', action.payload.slack_pref)
           .set('slack_webhook_url', action.payload.slack_webhook_url)
+      }));
+
+    case 'UPLOAD_FILE_PENDING':
+      return setState(state, state.setIn(['loading', 'upload'], true));
+
+    case 'UPLOAD_FILE_FULFILLED':
+      if (action.payload.message) {
+        return setState(state, state.setIn(['loading', 'upload'], false));
+      }
+
+      console.log(action.payload);
+
+      return setState(state, state.withMutations(map => {
+        map
+          .setIn(['loading', 'upload'], false)
+          .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
+          .set('packages', fromJSOrdered(action.payload.packages));
       }));
 
     default: return state;

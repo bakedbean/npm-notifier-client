@@ -8,7 +8,9 @@ import {Footer} from './Footer';
 
 export const Main = React.createClass({
   componentWillMount: function() {
-    this.props.dashboard();
+    if (localStorage.getItem('token')) {
+      this.props.dashboard();
+    }
   },
   render: function() {
     return <div id="main-wrapper" className="container-fluid">

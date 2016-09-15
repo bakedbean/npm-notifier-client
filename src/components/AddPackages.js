@@ -4,6 +4,7 @@ import React from 'react';
 import request from '../utils/request';
 import {fromJS} from 'immutable';
 import {AddPackage} from './AddPackage';
+import {UploadPackages} from './UploadPackages';
 
 export const AddPackages = React.createClass({
   componentWillMount: function() {
@@ -39,7 +40,8 @@ export const AddPackages = React.createClass({
     return <div className="row">
       <div className="col-xs-12 col-lg-8 offset-lg-2 add-panel">
         <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
-        {this.props.packages.map((k, i) => {
+        {this.props.uploading && <UploadPackages {...this.props} />}
+        {!this.props.uploading && this.props.packages.map((k, i) => {
           if (!k.get('_package').get('version')) {
             return <AddPackage 
               {...this.props} 
@@ -50,10 +52,13 @@ export const AddPackages = React.createClass({
           }
         })}
 
-        <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
+        {!this.props.uploading && <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
           {!this.props.loading.get('packages') && <h1><a href="#" id="save" onClick={() => this.validate()}><i className="fa fa-save"></i></a> <a href="#" onClick={() => this.addMorePackages()}><i className="fa fa-plus"></i></a></h1>}
           {this.props.loading.get('packages') && <h1><a href="#"><i className="fa fa-spin fa-circle-o-notch"></i></a></h1>}
-        </div>
+        </div>}
+        {this.props.uploading && !this.props.loading.get('upload') && <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
+          Choosing a file will automatically start the upload.<br/>Depending on the number of packages in your dev and production dependencies, this could take a few minutes.
+        </div>}
       </div>
     </div>;
   }
