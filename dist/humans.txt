@@ -1,0 +1,1 @@
+/* TEAM */ Founder and Developer: Eben Goodman Contact: eben.goodman@gmail.com Site: https://ebendev.com Twitter: @fatbeastie Location: Waitsfield, VT /* SITE */ Standards: CSS3, HTML5 Components: React, Redux, Twitter Bootstrap Software: Node, Express, MongoDB
