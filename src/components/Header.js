@@ -28,6 +28,7 @@ export const Header = React.createClass({
             {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
             <li><Link to="/contact"><i className="fa fa-envelope-o"></i></Link></li>
             {!this.state.isLoggedIn && <li><Link to="/pricing"><i className="fa fa-ellipsis-h"></i></Link></li>}
+            {this.state.isLoggedIn && <li><Link to="/account"><i className="fa fa-user"></i></Link></li>}
           </ul>
         </div>
 

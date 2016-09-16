@@ -11,6 +11,7 @@ import {AccountContainer} from './components/Account';
 import {ContactContainer} from './components/Contact';
 import {Terms} from './components/Terms';
 import {Privacy} from './components/Privacy';
+import {About} from './components/About';
 import App from './components/App';
 
 function isLoggedIn(nextState, replace, callback) {
@@ -38,5 +39,6 @@ export const routes = <Route component={App}>
     <Route path="dashboard" component={DashboardContainer} onEnter={authenticated}></Route>
     <Route path="terms" component={Terms}></Route>
     <Route path="privacy" component={Privacy}></Route>
+    <Route path="about" component={About}></Route>
   </Route>
 </Route>;
