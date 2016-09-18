@@ -26,9 +26,10 @@ export const Header = React.createClass({
           <ul>
             {!this.state.isLoggedIn && <li><Link to="/signin"><i className="fa fa-sign-in"></i></Link></li>}
             {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
-            <li><Link to="/contact"><i className="fa fa-envelope-o"></i></Link></li>
+            {this.props.location.pathname !== '/contact' && <li><Link to="/contact"><i className="fa fa-envelope-o"></i></Link></li>}
             {!this.state.isLoggedIn && <li><Link to="/pricing"><i className="fa fa-ellipsis-h"></i></Link></li>}
-            {this.state.isLoggedIn && <li><Link to="/account"><i className="fa fa-user"></i></Link></li>}
+            {this.state.isLoggedIn && this.props.location.pathname !== '/account' && <li><Link to="/account"><i className="fa fa-user"></i></Link></li>}
+            {this.state.isLoggedIn && this.props.location.pathname !== '/dashboard' && <li><Link to="/dashboard"><i className="fa fa-dashboard"></i></Link></li>}
           </ul>
         </div>
 
@@ -49,6 +50,7 @@ export const Header = React.createClass({
           <li><Link to="/contact">Contact</Link></li>
           {!this.props.account && <li><Link to="/pricing">Pricing</Link></li>}
           {this.props.account && <li><Link to="/account">Account</Link></li>}
+          {this.props.location.pathname !== '/dashboard' && <li><Link to="/dashboard">Dashboard</Link></li>}
         </ul>
       </div>
     </div>;
