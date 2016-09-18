@@ -22,7 +22,7 @@ export const Header = React.createClass({
   render: function() {
     return <div className="row">
       <div className="col-xs-12 col-lg-8 header">
-        <div className="hidden-sm-up pull-xs-right" style={{ fontSize: '1.5em' }}>
+        <div className="hidden-md-up pull-xs-right" style={{ fontSize: '1.5em' }}>
           <ul>
             {!this.state.isLoggedIn && <li><Link to="/signin"><i className="fa fa-sign-in"></i></Link></li>}
             {this.state.isLoggedIn && <li><a href="#" onClick={() => this.signOut()}><i className="fa fa-sign-out"></i></a></li>}
