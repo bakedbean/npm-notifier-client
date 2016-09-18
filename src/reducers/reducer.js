@@ -22,6 +22,9 @@ const initialState = Immutable.fromJS({
   },
   alerts: {
     login: false
+  },
+  package_view: {
+    view: 'list'
   }
 });
 
@@ -157,6 +160,9 @@ export default function reducer(state = initialState, action) {
           .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
           .set('packages', fromJSOrdered(action.payload.packages));
       }));
+
+    case 'DASHBOARD_VIEW':
+      return setState(state, state.setIn(['package_view', 'view'], action.view));
 
     default: return state;
   }

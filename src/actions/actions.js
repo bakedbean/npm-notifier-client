@@ -140,5 +140,9 @@ export const uploadFile = (url, file) => ({
     method: 'POST',
     body: file
   }).then(response => response.json())
+});
 
+export const dashboardView = view => ({
+  type: 'DASHBOARD_VIEW',
+  view: view
 });

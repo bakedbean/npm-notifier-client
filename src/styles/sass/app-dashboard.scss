@@ -5,6 +5,18 @@
 .dashboard {
   color: #FFFFFF;
 
+  ul {
+    display: inline;
+    padding: 0;
+    margin: 0 0 0 10px;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      padding: 0 10px 0 0;
+    }
+  }
+
   &.start {
     align-items: center;
 

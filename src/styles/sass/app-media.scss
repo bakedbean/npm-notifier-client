@@ -1,0 +1,23 @@
+@media screen and (max-width: 46.99em) {
+  table {
+    padding: 0;
+    margin: 0;
+    font-size: .75em;
+  }
+
+  thead, th, tr, tbody, td {
+    padding: 0;
+    margin: 0;
+  }
+
+  .dashboard {
+    /*div[class*="col-"], div[class*=" col-"] {*/
+      /*padding: 0;*/
+      /*margin: 0;*/
+    /*}*/
+
+    ul li a {
+      font-size: 1.75em !important;
+    }
+  }
+}
