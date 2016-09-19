@@ -16,7 +16,7 @@ export const Packages = React.createClass({
         {packages}
       </div>;
     } else if (this.props.package_view.get('view') === 'list') {
-      return <table className="table table-sm table-striped">
+      return <table className="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
