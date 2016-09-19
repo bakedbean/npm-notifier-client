@@ -12,7 +12,7 @@ export const Packages = React.createClass({
     });
 
     if (this.props.package_view.get('view') === 'grid') {
-      return <div className="row">
+      return <div className="row content" style={{ paddingTop: '110px' }}>
         {packages}
       </div>;
     } else if (this.props.package_view.get('view') === 'list') {

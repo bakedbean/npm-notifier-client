@@ -9,6 +9,7 @@
     display: inline;
     padding: 0;
     margin: 0 0 0 10px;
+    font-size: 1.75em;
 
     li {
       display: inline;
@@ -46,8 +47,9 @@
   }
 
   .search {
-    font-size: .75em !important;
+    font-size: .75em;
     font-weight: normal !important;
+    margin: 0 0 5px 0;
   }
 
   .add-panel {

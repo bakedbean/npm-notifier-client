@@ -37,8 +37,7 @@ export const AddPackages = React.createClass({
     this.props.packagesSave(this.props.packages);
   },
   render: function() {
-    return <div className="row">
-      <div className="col-xs-12 col-lg-8 offset-lg-2 add-panel">
+    return <div className="add-panel">
         <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
         {this.props.uploading && <UploadPackages {...this.props} />}
         {!this.props.uploading && this.props.packages.map((k, i) => {
@@ -59,7 +58,6 @@ export const AddPackages = React.createClass({
         {this.props.uploading && !this.props.loading.get('upload') && <div className="text-xs-center text-lg-center" style={{ marginTop: '20px' }}>
           Choosing a file will automatically start the upload.<br/>Depending on the number of packages in your dev and production dependencies, this could take a few minutes.
         </div>}
-      </div>
-    </div>;
+      </div>;
   }
 });
