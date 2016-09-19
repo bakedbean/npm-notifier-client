@@ -61,6 +61,10 @@ export default function reducer(state = initialState, action) {
     case 'DASHBOARD_PENDING':
       return setState(state, state.setIn(['loading', 'dashboard'], true));
 
+    case 'DASHBOARD_REJECTED':
+      localStorage.removeItem('token');
+      window.location = '/';
+
     case 'DASHBOARD_FULFILLED':
       state = setState(state, state.setIn(['loading', 'dashboard'], false));
       state = setState(state, state.set('account', action.payload.account));
