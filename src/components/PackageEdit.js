@@ -26,9 +26,9 @@ export const PackageEdit = React.createClass({
           checked={this.props.data.get('slack')}
           onChange={this.handleChange.bind(this, 'slack')} /> Slack
       </div>}
-      {this.props.package_view.get('view') === 'grid' && <div className="col-xs-12 text-xs-center" style={{ padding: '10px 0 0 0' }}>
-        <button className="btn btn-sm package-edit" onClick={() => this.props.toggleEdit()}>Done</button>
-      </div>}
+      <div className="col-xs-12 text-xs-center" style={{ padding: '10px 0 0 0' }}>
+        <button className="btn btn-sm package-edit" onClick={this.props.toggleEdit}>Done</button>
+      </div>
     </div>;
   }
 });
