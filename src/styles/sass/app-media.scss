@@ -26,3 +26,21 @@
     font-size: .5em !important;
   }
 }
+
+// Large devices (desktops, 62em and up)
+@media screen and (min-width: 62.01em) and (max-width: 74.99em) {
+  .package-row {
+    &:hover {
+      background-color: $lightorange !important;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 75em and up)
+@media screen and (min-width: 68em) {
+  .package-row {
+    &:hover {
+      background-color: $lightorange !important;
+    }
+  }
+}
