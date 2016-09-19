@@ -21,7 +21,8 @@ const initialState = Immutable.fromJS({
     deleting: false
   },
   alerts: {
-    login: false
+    login: false,
+    upload: false
   },
   package_view: {
     view: 'list'
@@ -140,6 +141,9 @@ export default function reducer(state = initialState, action) {
 
     case 'UPDATE_PREF':
       return setState(state, state.set(action.pref, action.value));
+    
+    case 'UPDATE_ALERT':
+      return setState(state, state.setIn(['alerts', action.alert], false));
 
     case 'UPDATE_USER_PENDING':
       return setState(state, state.setIn(['loading', 'account'], true));
@@ -164,6 +168,7 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.withMutations(map => {
         map
           .setIn(['loading', 'upload'], false)
+          .setIn(['alerts', 'upload'], true)
           .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
           .set('packages', fromJSOrdered(action.payload.packages));
       }));

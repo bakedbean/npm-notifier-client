@@ -17,6 +17,11 @@ export const Dashboard = React.createClass({
       searching: false
     };
   },
+  componentWillReceiveProps: function(nextProps) {
+    if (nextProps.alerts.get('upload')) {
+      setTimeout(() => this.props.updateAlert('upload'), 5000);
+    }
+  },
   toggleAddPackages: function() {
     if (this.props.account === 'FREE' && this.props.savedPackages.size >= 5) {
       alert('5 package limit reached. Please check out pricing for more options');
@@ -42,6 +47,7 @@ export const Dashboard = React.createClass({
       return <div className="dashboard">
         <div className="row content">
           <div className="col-xs-12 dashboard-col" style={{ paddingTop: '110px' }}>
+            {this.props.alerts.get('upload') && <div className="alert alert-success text-xs-center">package.json upload complete, added {this.props.packages.size} packages.</div>}
             <h3>Dashboard</h3>
 
             {!this.state.adding && <DashboardNav 
@@ -70,6 +76,7 @@ function mapStateToProps(state) {
   return {
     auth: state.reducer.get('auth'),
     account: state.reducer.get('account'),
+    alerts: state.reducer.get('alerts'),
     packages: state.reducer.get('packages'),
     savedPackages: state.reducer.get('savedPackages'),
     loading: state.reducer.get('loading'),

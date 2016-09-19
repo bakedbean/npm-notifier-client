@@ -122,6 +122,11 @@ export const updatePref = ( pref, value ) => ({
   value: value
 });
 
+export const updateAlert = alert => ({
+  type: 'UPDATE_ALERT',
+  alert: alert
+});
+
 export const updateUser = (email, slack, webhook) => ({
   type: 'UPDATE_USER',
   payload: network().post({
