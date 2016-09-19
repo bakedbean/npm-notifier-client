@@ -42,7 +42,6 @@ export const Pricing = React.createClass({
           {this.props.account !== 'PAID' && <div className="col-xs-12 col-lg-4 offset-lg-2 option">
             <h3>Free Notifications</h3>
             <p>Track up to 5 packages.</p>
-            <p>Packages checked <strong>weekly</strong>.</p>
             <p>Email notifications</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -52,7 +51,6 @@ export const Pricing = React.createClass({
           <div className={classNames('col-xs-12', 'col-lg-4', 'option', { 'offset-lg-4': this.props.account === 'PAID' })}>
             <h3>Unlimited Notifications</h3>
             <p>Track <strong>unlimited</strong> packages.</p>
-            <p>Packages checked <strong>daily</strong>.</p>
             <p>Upload package.json</p>
             <p>Email notifications</p>
             <p>Slack Notifications</p>
