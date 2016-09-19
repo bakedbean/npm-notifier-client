@@ -36,7 +36,7 @@ export const Dashboard = React.createClass({
     this.props.dashboardView(view);
   },
   render: function() {
-    if (this.props.packages.size < 1 && !this.state.adding && !this.props.loading.get('dashbaord')) {
+    if (this.props.packages.size < 1 && !this.state.adding && !this.props.loading.get('dashboard')) {
       return <DashboardStart {...this.props} toggleAddPackages={this.toggleAddPackages} toggleFileUpload={this.toggleFileUpload} />;
     } else {
       return <div className="dashboard">

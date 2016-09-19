@@ -66,14 +66,17 @@ export default function reducer(state = initialState, action) {
       window.location = '/';
 
     case 'DASHBOARD_FULFILLED':
-      state = setState(state, state.setIn(['loading', 'dashboard'], false));
-      state = setState(state, state.set('account', action.payload.account));
-      state = setState(state, state.set('lastPaid', action.payload.paid));
-      state = setState(state, state.set('slack_webhook_url', action.payload.slack_webhook_url));
-      state = setState(state, state.set('email_pref', action.payload.email_pref));
-      state = setState(state, state.set('slack_pref', action.payload.slack_pref));
-      state = setState(state, state.set('savedPackages', fromJSOrdered(action.payload.packages)));
-      return setState(state, state.set('packages', fromJSOrdered(action.payload.packages)));
+      return setState(state, state.withMutations(map => {
+        map
+          .set('account', action.payload.account)
+          .set('lastPaid', action.payload.paid)
+          .set('slack_webhook_url', action.payload.slack_webhook_url)
+          .set('email_pref', action.payload.email_pref)
+          .set('slack_pref', action.payload.slack_pref)
+          .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
+          .set('packages', fromJSOrdered(action.payload.packages))
+          .setIn(['loading', 'dashboard'], false);
+      }));
 
     case 'PACKAGE_ADD':
       return setState(state, state.set('packages', state.get('packages').push(Immutable.fromJS({ _package: { name: '', isValid: true } }))));
