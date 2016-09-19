@@ -17,6 +17,7 @@ describe('<Dashboard />', () => {
       account: Data().reducer.get('account'),
       packages: Data().reducer.get('packages'),
       savedPackages: Data().reducer.get('savedPackages'),
+      alerts: Data().reducer.get('alerts'),
       loading: Data().reducer.get('loading')
     }
   });
@@ -45,12 +46,5 @@ describe('<Dashboard />', () => {
     const wrapper = shallow(<Dashboard {...state} />);
     wrapper.setState({ adding: true });
     expect(wrapper.find('AddPackages')).to.have.length(1);
-  });
-
-  it('should allow searching packages', () => {
-    state.packages = state.packages.merge(List([Package()]));
-    const wrapper = shallow(<Dashboard {...state} />);
-    wrapper.setState({ searching: true });
-    expect(wrapper.find('Search')).to.have.length(1);
   });
 });

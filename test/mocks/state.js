@@ -17,8 +17,16 @@ export default function Data() {
         login: false,
         dashboard: false,
         packages: false,
+        upload: false,
         account: false,
         deleting: false
+      },
+      alerts: {
+        login: false,
+        upload: false
+      },
+      package_view: {
+        view: 'list'
       }
     })
   }
