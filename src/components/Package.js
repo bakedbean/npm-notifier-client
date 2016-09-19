@@ -48,18 +48,21 @@ export const Package = React.createClass({
         </div>;
     } else if (this.props.package_view.get('view') === 'list') {
       if (!this.state.removing && !this.state.editing) {
-        return <tr>
-          <td style={{ fontSize: '1.25em' }}><a href="Javascript: void(0);" onClick={this.toggleRemove}><i className="fa fa-times"></i></a> <a href="Javascript: void(0);" onClick={() => this.toggleEdit()}><i className="fa fa-pencil"></i></a></td>
+        return <tr className="package-row" onClick={this.toggleEdit}>
           <td>{this.props.data.get('_package').get('name')}</td>
           <td>{this.props.data.get('_package').get('version')}</td>
           <td>{moment(this.props.data.get('_package').get('checked_at')).format('MM/DD/YY h:mm a')}</td>
           <td>{moment(this.props.data.get('_package').get('updated_at')).format('MM/DD/YY h:mm a')}</td>
+          <td className="hidden-md-up"><a href="Javascript: void(0);" onClick={this.toggleEdit}><i className="fa fa-chevron-right"></i></a></td>
         </tr>;
       } else if (this.state.editing) {
         return <tr>
           <td colSpan="6" style={{ textAlign: 'center' }}>
             <p>Editing {this.props.data.get('_package').get('name')}</p>
-            <PackageEdit {...this.props} toggleEdit={this.toggleEdit} />
+            <PackageEdit 
+              {...this.props} 
+              toggleEdit={this.toggleEdit} 
+              toggleRemove={this.toggleRemove} />
           </td>
         </tr>;
       } else {

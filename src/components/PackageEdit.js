@@ -27,7 +27,7 @@ export const PackageEdit = React.createClass({
           onChange={this.handleChange.bind(this, 'slack')} /> Slack
       </div>}
       <div className="col-xs-12 text-xs-center" style={{ padding: '10px 0 0 0' }}>
-        <button className="btn btn-sm package-edit" onClick={this.props.toggleEdit}>Done</button>
+        <button className="btn btn-sm package-edit" onClick={this.props.toggleEdit}>Done</button> <button className="btn btn-sm package-edit" onClick={this.props.toggleRemove} style={{ backgroundColor: 'red', color: '#FFFFFF' }}>Delete</button>
       </div>
     </div>;
   }

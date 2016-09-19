@@ -19,11 +19,11 @@ export const Packages = React.createClass({
       return <table className="table table-sm table-striped">
         <thead>
           <tr>
-            <th></th>
             <th>Name</th>
             <th>Version</th>
             <th>Checked</th>
             <th>Updated</th>
+            <th className="hidden-md-up"></th>
           </tr>
         </thead>
         <tbody>
