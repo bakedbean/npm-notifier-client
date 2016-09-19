@@ -20,7 +20,8 @@ export const Signin = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    auth: state.reducer.get('auth')
+    auth: state.reducer.get('auth'),
+    alerts: state.reducer.get('alerts')
   };
 }
 
