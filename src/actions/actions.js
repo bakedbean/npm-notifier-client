@@ -151,3 +151,8 @@ export const dashboardView = view => ({
   type: 'DASHBOARD_VIEW',
   view: view
 });
+
+export const sortPackages = field => ({
+  type: 'SORT_PACKAGES',
+  field: field
+});

@@ -181,6 +181,11 @@ export default function reducer(state = initialState, action) {
     case 'DASHBOARD_VIEW':
       return setState(state, state.setIn(['package_view', 'view'], action.view));
 
+    case 'SORT_PACKAGES':
+      let sortedPackages = state.get('packages').sortBy(p => p.get('_package').get(action.field)).reverse();
+      console.log(sortedPackages.toJS());
+      return state;
+
     default: return state;
   }
 }

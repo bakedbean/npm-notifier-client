@@ -4,6 +4,9 @@ import React from 'react';
 import {Package} from './Package';
 
 export const Packages = React.createClass({
+  sort: function(field) {
+    this.props.sortPackages(field);
+  },
   render: function() {
     let packages = this.props.packages.map((k,i) => {
       if (k.get('_package').get('version')) {
@@ -19,10 +22,10 @@ export const Packages = React.createClass({
       return <table className="table table-striped">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Version</th>
-            <th>Checked</th>
-            <th>Updated</th>
+            <th onClick={() => this.sort('name')} style={{ cursor: 'pointer' }}>Name</th>
+            <th onClick={() => this.sort('version')} style={{ cursor: 'pointer' }}>Version</th>
+            <th onClick={() => this.sort('checked_at')} style={{ cursor: 'pointer' }}>Checked</th>
+            <th onClick={() => this.sort('updated_at')} style={{ cursor: 'pointer' }}>Updated</th>
             <th className="hidden-md-up"></th>
           </tr>
         </thead>
