@@ -67,6 +67,11 @@ export default function reducer(state = initialState, action) {
       window.location = '/';
 
     case 'DASHBOARD_FULFILLED':
+      if (!action.payload.success && action.payload.message === 'Failed to authenticate token') {
+        localStorage.removeItem('token');
+        window.location = '/';
+      }
+
       return setState(state, state.withMutations(map => {
         map
           .set('account', action.payload.account)
