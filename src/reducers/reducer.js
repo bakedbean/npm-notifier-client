@@ -25,7 +25,10 @@ const initialState = Immutable.fromJS({
     upload: false
   },
   package_view: {
-    view: 'list'
+    view: 'list',
+    sort: {
+      asc: true
+    }
   }
 });
 
@@ -182,9 +185,12 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.setIn(['package_view', 'view'], action.view));
 
     case 'SORT_PACKAGES':
-      let sortedPackages = state.get('packages').sortBy(p => p.get('_package').get(action.field)).reverse();
-      console.log(sortedPackages.toJS());
-      return state;
+      state = setState(state, state.setIn(['package_view', 'sort', 'asc'], !state.getIn(['package_view', 'sort', 'asc'])));
+      if (state.getIn(['package_view', 'sort', 'asc'])) {
+        return setState(state, state.set('packages', state.get('packages').sortBy(p => p.get('_package').get(action.field))));
+      } else {
+        return setState(state, state.set('packages', state.get('packages').sortBy(p => p.get('_package').get(action.field)).reverse()));
+      }
 
     default: return state;
   }
