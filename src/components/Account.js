@@ -14,6 +14,9 @@ export const Account = React.createClass({
       this.props.updatePref(pref, event.currentTarget.value);
     }
   },
+  setupGithub: function() {
+    window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github_id + '&scope=repo&state=qzrghtksjh';
+  },
   save: function() {
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url);
   },
@@ -34,6 +37,17 @@ export const Account = React.createClass({
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
             <strong>Currently tracking:</strong> {this.props.packages.size} packages
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
+            <strong>Github Integration</strong>
+            <p>
+              Configure github repos to monitor package.json changes and update the packages you're tracking automatically.
+            </p>
+            <p>
+              <button className="btn btn-sm" onClick={this.setupGithub}><i className="fa fa-github"></i> Configure</button>
+            </p>
           </div>
         </div>
         <div className="row">
@@ -69,6 +83,9 @@ export const Account = React.createClass({
           <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center text-lg-center">
             <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>
             <button className="btn btn-lg" onClick={() => window.location = '/'}><span className="hidden-xs-down">Back to Dashboard</span><span className="hidden-sm-up"><i className="fa fa-dashboard"></i></span></button>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
           </div>
         </div>
       </div>
@@ -84,7 +101,8 @@ function mapStateToProps(state) {
     slack_webhook_url: state.reducer.get('slack_webhook_url'),
     email_pref: state.reducer.get('email_pref'),
     slack_pref: state.reducer.get('slack_pref'),
-    packages: state.reducer.get('savedPackages')
+    packages: state.reducer.get('savedPackages'),
+    github_id: state.reducer.get('github_id')
   };
 }
 

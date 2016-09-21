@@ -5,6 +5,7 @@ import fromJSOrdered from '../utils/fromjsordered';
 
 const initialState = Immutable.fromJS({
   auth: {},
+  github_id: '2942241485d1bf8dc196',
   account: '',
   email_pref: false,
   slack_pref: false,
