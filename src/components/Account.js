@@ -7,6 +7,11 @@ import {Link} from 'react-router';
 import moment from 'moment';
 
 export const Account = React.createClass({
+  componentWillMount: function() {
+    if (this.props.location.query.state === 'qzrghtksjh') {
+      this.props.setupGithub(this.props.location.query.code);
+    }
+  },
   handleChange: function(pref, event) {
     if (event.currentTarget.type === 'checkbox') {
       this.props.updatePref(pref, !this.props[pref]);
@@ -14,13 +19,22 @@ export const Account = React.createClass({
       this.props.updatePref(pref, event.currentTarget.value);
     }
   },
+  handleRepos: function(event) {
+    this.props.saveRepo(event.currentTarget.checked ? 'add' : 'remove', this.props.github.get('repos').find(r => String(r.get('id')) === String(event.currentTarget.value)));
+  },
   setupGithub: function() {
-    window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github_id + '&scope=repo&state=qzrghtksjh';
+    window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
   },
   save: function() {
-    this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url);
+    this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
   },
   render: function() {
+    let repos = this.props.github.get('repos').map((r, i) => <div key={i}><input type="checkbox" 
+      value={r.get('id')} 
+      onChange={this.handleRepos} /> {r.get('name')}</div>)
+
+    let savedRepos = this.props.github.get('saved_repos').map((r, i) => <div key={i}><a href="Javascript: void(0);" onClick={() => this.props.saveRepo('remove', r)}><i className="fa fa-times"></i></a> {r.get('name')}</div>);
+
     return <div className="row content account">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>Account</h2>
@@ -39,7 +53,7 @@ export const Account = React.createClass({
             <strong>Currently tracking:</strong> {this.props.packages.size} packages
           </div>
         </div>
-        <div className="row">
+        {this.props.github.get('token') === '' && <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
             <strong>Github Integration</strong>
             <p>
@@ -49,7 +63,21 @@ export const Account = React.createClass({
               <button className="btn btn-sm" onClick={this.setupGithub}><i className="fa fa-github"></i> Configure</button>
             </p>
           </div>
-        </div>
+        </div>}
+        {this.props.github.get('token') !== '' && <div className="row">
+          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
+            <strong>Github Integration</strong>
+            <p><button className="btn btn-sm" onClick={() => this.props.setupRepos(this.props.github.get('token'))}><i className="fa fa-github"></i> Configure Repositories</button></p>
+            {repos.size > 0 && <p><strong>Choose repositories to sync:</strong><br/><small>NOTE: Repositories without a top level package.json will be ignored.</small></p>}
+            {repos.size > 0 && <div className="repos">
+              {repos}
+            </div>}
+            {this.props.github.get('saved_repos').size > 0 && <div className="repos">
+              <strong>Syncing:</strong>
+              {savedRepos}
+            </div>}
+          </div>
+        </div>}
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
             <strong>Notification Preferences:</strong>
@@ -102,7 +130,7 @@ function mapStateToProps(state) {
     email_pref: state.reducer.get('email_pref'),
     slack_pref: state.reducer.get('slack_pref'),
     packages: state.reducer.get('savedPackages'),
-    github_id: state.reducer.get('github_id')
+    github: state.reducer.get('github')
   };
 }
 

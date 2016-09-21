@@ -127,7 +127,7 @@ export const updateAlert = alert => ({
   alert: alert
 });
 
-export const updateUser = (email, slack, webhook) => ({
+export const updateUser = (email, slack, webhook, repos) => ({
   type: 'UPDATE_USER',
   payload: network().post({
     resource: 'api/user',
@@ -135,7 +135,8 @@ export const updateUser = (email, slack, webhook) => ({
   }, {
     email_pref: email,
     slack_pref: slack,
-    slack_webhook_url: webhook
+    slack_webhook_url: webhook,
+    github_repos: repos
   })
 });
 
@@ -155,4 +156,28 @@ export const dashboardView = view => ({
 export const sortPackages = field => ({
   type: 'SORT_PACKAGES',
   field: field
+});
+
+export const setupGithub = code => ({
+  type: 'SETUP_GITHUB',
+  payload: network().get({
+    resource: 'api/github',
+    params: '?token=' + localStorage.getItem('token') + '&code=' + code
+  })
+});
+
+export const setupRepos = token => ({
+  type: 'SETUP_REPOS',
+  payload: fetch('https://api.github.com/user/repos', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'token ' + token
+    }
+  }).then(response => response.json())
+});
+
+export const saveRepo = (event, repo) => ({
+  type: 'SAVE_REPO',
+  event: event,
+  repo: repo
 });

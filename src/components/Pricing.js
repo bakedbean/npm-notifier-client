@@ -51,6 +51,7 @@ export const Pricing = React.createClass({
           <div className={classNames('col-xs-12', 'col-lg-4', 'option', { 'offset-lg-4': this.props.account === 'PAID' })}>
             <h3>Unlimited Notifications</h3>
             <p>Track <strong>unlimited</strong> packages.</p>
+            <p>Github repo integration</p>
             <p>Upload package.json</p>
             <p>Email notifications</p>
             <p>Slack Notifications</p>

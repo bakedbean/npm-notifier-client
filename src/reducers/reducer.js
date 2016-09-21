@@ -5,11 +5,16 @@ import fromJSOrdered from '../utils/fromjsordered';
 
 const initialState = Immutable.fromJS({
   auth: {},
-  github_id: '2942241485d1bf8dc196',
   account: '',
   email_pref: false,
   slack_pref: false,
   slack_webhook_url: '',
+  github: {
+    id: '2942241485d1bf8dc196',
+    token: '',
+    repos: [],
+    saved_repos: []
+  },
   packages: [],
   savedPackages: [],
   contacted: false,
@@ -19,6 +24,7 @@ const initialState = Immutable.fromJS({
     packages: false,
     upload: false,
     account: false,
+    github: false,
     deleting: false
   },
   alerts: {
@@ -85,6 +91,8 @@ export default function reducer(state = initialState, action) {
           .set('slack_pref', action.payload.slack_pref)
           .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
           .set('packages', fromJSOrdered(action.payload.packages))
+          .setIn(['github', 'token'], action.payload.github_token)
+          .setIn(['github', 'saved_repos'], fromJSOrdered(action.payload.github_repos))
           .setIn(['loading', 'dashboard'], false);
       }));
 
@@ -161,6 +169,7 @@ export default function reducer(state = initialState, action) {
       return setState(state, state.withMutations(map => {
         map
           .setIn(['loading', 'account'], false)
+          .setIn(['github', 'repos'], Immutable.fromJS([]))
           .set('email_pref', action.payload.email_pref)
           .set('slack_pref', action.payload.slack_pref)
           .set('slack_webhook_url', action.payload.slack_webhook_url)
@@ -192,6 +201,49 @@ export default function reducer(state = initialState, action) {
       } else {
         return setState(state, state.set('packages', state.get('packages').sortBy(p => p.get('_package').get(action.field)).reverse()));
       }
+
+    case 'SETUP_GITHUB_PENDING':
+      return setState(state, state.setIn(['loading', 'github'], true));
+
+    case 'SETUP_GITHUB_FULFILLED':
+      return setState(state, state.withMutations(map => {
+        map
+          .setIn(['loading', 'github'], false)
+          .setIn(['github', 'token'], action.payload.token);
+      }));
+
+    case 'SETUP_REPOS_FULFILLED':
+      return setState(state, state.setIn(['github', 'repos'], fromJSOrdered(action.payload)));
+
+    case 'SAVE_REPO':
+      let repos, newRepo;
+
+      newRepo = Immutable.fromJS({
+        id: action.repo.get('id'),
+        owner: {
+          id: action.repo.get('owner').get('id'),
+          login: action.repo.get('owner').get('login')
+        },
+        name: action.repo.get('name')
+      });
+
+      let index = state.get('github').get('saved_repos').indexOf(state.get('github').get('saved_repos').find(r => r.get('id') === newRepo.get('id')));
+
+      if (action.event === 'add' && index < 0) {
+        repos = state
+          .get('github')
+          .get('saved_repos')
+          .push(newRepo);
+      } else if (action.event === 'remove' && index >= 0) {
+        repos = state
+          .get('github')
+          .get('saved_repos')
+          .delete(index);
+      } else {
+        repos = state.get('github').get('saved_repos');
+      }
+
+      return setState(state, state.setIn(['github', 'saved_repos'], repos));
 
     default: return state;
   }
