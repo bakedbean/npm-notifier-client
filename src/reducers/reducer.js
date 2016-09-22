@@ -173,6 +173,8 @@ export default function reducer(state = initialState, action) {
           .set('email_pref', action.payload.email_pref)
           .set('slack_pref', action.payload.slack_pref)
           .set('slack_webhook_url', action.payload.slack_webhook_url)
+          .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
+          .set('packages', fromJSOrdered(action.payload.packages))
       }));
 
     case 'UPLOAD_FILE_PENDING':
