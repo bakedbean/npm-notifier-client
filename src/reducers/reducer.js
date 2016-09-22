@@ -92,7 +92,7 @@ export default function reducer(state = initialState, action) {
           .set('slack_pref', action.payload.slack_pref)
           .set('savedPackages', fromJSOrdered(action.payload.packages.filter(p => p._package.isValid)))
           .set('packages', fromJSOrdered(action.payload.packages))
-          .setIn(['github', 'token'], action.payload.github_token)
+          .setIn(['github', 'token'], action.payload.github_token ? action.payload.github_token : '')
           .setIn(['github', 'saved_repos'], fromJSOrdered(action.payload.github_repos))
           .setIn(['loading', 'dashboard'], false);
       }));

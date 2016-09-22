@@ -23,12 +23,14 @@ export const Account = React.createClass({
     this.props.saveRepo(event.currentTarget.checked ? 'add' : 'remove', this.props.github.get('repos').find(r => String(r.get('id')) === String(event.currentTarget.value)));
   },
   setupGithub: function() {
+    console.log('test');
     window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
   },
   save: function() {
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
   },
   render: function() {
+    console.log(this.props.github.get('token'));
     let repos = this.props.github.get('repos').map((r, i) => <div key={i}><input type="checkbox" 
       value={r.get('id')} 
       onChange={this.handleRepos} /> {r.get('name')}</div>)
