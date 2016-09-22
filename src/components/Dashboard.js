@@ -23,12 +23,7 @@ export const Dashboard = React.createClass({
     }
   },
   toggleAddPackages: function() {
-    if (this.props.account === 'FREE' && this.props.savedPackages.size >= 5) {
-      alert('5 package limit reached. Please check out pricing for more options');
-      return this.setState({ adding: false });
-    } else {
-      return this.setState({ adding: !this.state.adding, uploading: false });
-    }
+    return this.setState({ adding: !this.state.adding, uploading: false });
   },
   toggleFileUpload: function() {
     this.setState({ adding: !this.state.adding, uploading: !this.state.uploading });

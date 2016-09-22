@@ -30,7 +30,9 @@ export const Account = React.createClass({
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
   },
   render: function() {
-    console.log(this.props.github.get('token'));
+    let duration = 365;
+    if (this.props.account !== 'PAID') duration = 30;
+
     let repos = this.props.github.get('repos').map((r, i) => <div key={i}><input type="checkbox" 
       value={r.get('id')} 
       onChange={this.handleRepos} /> {r.get('name')}</div>)
@@ -42,14 +44,14 @@ export const Account = React.createClass({
         <h2>Account</h2>
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Account Type:</strong> {this.props.account === 'FREE' && "Free - track up to 5 packages"} {this.props.account === 'PAID' && "Unlimited - track as many packages as you want"}
+            <strong>Account Type:</strong> {this.props.account === 'FREE' && "Trial"} {this.props.account === 'PAID' && "Paid"}
           </div>
         </div>
-        {this.props.account === 'PAID' && <div className="row">
+        <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Unlimited account:</strong> created {moment(this.props.lastPaid).format('MM/DD/YYYY')} (Expires {moment(this.props.lastPaid).to(moment(this.props.lastPaid).add(365, 'days'))}) <Link to="/pricing">Renew</Link>
+            <strong>Account:</strong> created {moment(this.props.lastPaid).format('MM/DD/YYYY')} (Expires {moment(this.props.lastPaid).to(moment(this.props.lastPaid).add(duration, 'days'))}) <Link to="/pricing">Renew</Link>
           </div>
-        </div>}
+        </div>
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
             <strong>Currently tracking:</strong> {this.props.packages.size} packages
@@ -97,11 +99,10 @@ export const Account = React.createClass({
                 value="email_pref"
                 checked={this.props.email_pref}
                 onChange={this.handleChange.bind(this, 'email_pref')} /> Email Notifications</span>
-              {this.props.account === 'PAID' && 
-                <span className="preference"><input type="checkbox" 
-                  value="slack_pref" 
-                  checked={this.props.slack_pref} 
-                  onChange={this.handleChange.bind(this, 'slack_pref')} /> Slack Notifications</span>}
+              <span className="preference"><input type="checkbox" 
+                value="slack_pref" 
+                checked={this.props.slack_pref} 
+                onChange={this.handleChange.bind(this, 'slack_pref')} /> Slack Notifications</span>
             </p>
             {this.props.slack_pref && <p>Slack Webhook URL:<br/>
               <input type="text" 
@@ -113,11 +114,11 @@ export const Account = React.createClass({
             </p>}
           </div>
         </div>
-        {this.props.account === 'FREE' && <div className="row">
+        <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section text-xs-center text-lg-center">
-            Upgrade to <Link to="/pricing">unlimited</Link> and setup Slack notifications
+            Upgrade to <Link to="/pricing">paid</Link> and keep receiving notifications.
           </div>
-        </div>}
+        </div>
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center text-lg-center">
             <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>

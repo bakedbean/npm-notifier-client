@@ -16,11 +16,7 @@ export const AddPackages = React.createClass({
     }
   },
   addMorePackages: function() {
-    if (this.props.account === 'FREE' && this.props.packages.size === 5) {
-      alert("5 package limit reached. Please check out pricing options for more packages.");
-    } else {
-      this.props.packageAdd();
-    }
+    this.props.packageAdd();
   },
   removePackage: function(index) {
     this.props.packageRemove(index);
