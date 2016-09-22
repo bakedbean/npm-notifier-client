@@ -50,7 +50,7 @@ export const Header = React.createClass({
           <li><Link to="/contact">Contact</Link></li>
           {!this.props.account && <li><Link to="/pricing">Pricing</Link></li>}
           {this.props.account && <li><Link to="/account">Account</Link></li>}
-          {this.props.location.pathname !== '/dashboard' && <li><Link to="/dashboard">Dashboard</Link></li>}
+          {this.props.location.pathname !== '/dashboard' && <li><Link to="/dashboard">{this.props.account ? "Dashboard" : "Set Up"}</Link></li>}
         </ul>
       </div>
     </div>;
