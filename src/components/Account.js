@@ -64,7 +64,16 @@ export const Account = React.createClass({
             </p>
           </div>
         </div>}
-        {this.props.github.get('token') !== '' && <div className="row">
+        {this.props.alerts.get('github') && <div className="col-xs-12 col-lg-6 offset-lg-3 alert alert-danger">
+          <strong>Github Integration</strong>
+          <p>
+            Uh oh, looks like there was a problem connecting to the Github API.<br/>You may need re-authorize NPM Notifier?
+          </p>
+          <p>
+            <button className="btn btn-sm" onClick={this.setupGithub}><i className="fa fa-github"></i> Configure</button>
+          </p>
+        </div>}
+        {this.props.github.get('token') !== '' && !this.props.alerts.get('github') && <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section">
             <strong>Github Integration</strong>
             <p><button className="btn btn-sm" onClick={() => this.props.setupRepos(this.props.github.get('token'))}><i className="fa fa-github"></i> Configure Repositories</button></p>
@@ -129,6 +138,7 @@ function mapStateToProps(state) {
     slack_webhook_url: state.reducer.get('slack_webhook_url'),
     email_pref: state.reducer.get('email_pref'),
     slack_pref: state.reducer.get('slack_pref'),
+    alerts: state.reducer.get('alerts'),
     packages: state.reducer.get('savedPackages'),
     github: state.reducer.get('github')
   };

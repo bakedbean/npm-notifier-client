@@ -29,7 +29,8 @@ const initialState = Immutable.fromJS({
   },
   alerts: {
     login: false,
-    upload: false
+    upload: false,
+    github: false
   },
   package_view: {
     view: 'list',
@@ -215,7 +216,11 @@ export default function reducer(state = initialState, action) {
       }));
 
     case 'SETUP_REPOS_FULFILLED':
-      return setState(state, state.setIn(['github', 'repos'], fromJSOrdered(action.payload)));
+      if (action.payload.message === 'Unauthorized') {
+        return setState(state, state.setIn(['alerts', 'github'], true));
+      } else {
+        return setState(state, state.setIn(['github', 'repos'], fromJSOrdered(action.payload)));
+      }
 
     case 'SAVE_REPO':
       let repos, newRepo;
