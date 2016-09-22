@@ -114,11 +114,11 @@ export const Account = React.createClass({
             </p>}
           </div>
         </div>
-        <div className="row">
+        {this.props.account !== 'PAID' && <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 section text-xs-center text-lg-center">
             Upgrade to <Link to="/pricing">paid</Link> and keep receiving notifications.
           </div>
-        </div>
+        </div>}
         <div className="row">
           <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center text-lg-center">
             <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>
