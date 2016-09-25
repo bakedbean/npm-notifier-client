@@ -63,6 +63,9 @@ export const Pricing = React.createClass({
             <p>Control notifications globally, or per package.</p>
             <h5 className="price">30 Day Trial</h5>
             <p>Try it out, after 30 days you'll simply stop receiving notifications, but we'll hang on to your account and configuration for an additional 60 days.  If you decide to pay for the year of unlimited notifications, then you'll start receiving notifications again!</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
           </div>
         </div>
         <div className="row hidden-sm-up" style={{ margin: '10px 0 10px 0' }}>
