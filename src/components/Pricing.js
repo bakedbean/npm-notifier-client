@@ -61,7 +61,7 @@ export const Pricing = React.createClass({
             <h1 className="price-icon"><i className="fa fa-gears"></i></h1>
             <p>Control notifications globally, or per package.</p>
             <h5 className="price">30 Day Trial</h5>
-            <p>Try it out, after 30 days you'll simply stop receiving notifications, but we'll hang on to your account and configuration for an additional 60 days.  If you decide to pay for the year of unlimited notifications, then you'll start receiving notifications again!</p>
+            <p><a href="/" style={{ color: '#FFFFFF', textDecoration: 'underline' }}>Try it out free for 30 days.</a></p>
           </div>
         </div>
         <p>&nbsp;</p>
