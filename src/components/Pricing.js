@@ -39,27 +39,26 @@ export const Pricing = React.createClass({
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>NPM Notifier Pricing</h2>
         <div className="row">
-          <div className={classNames('col-xs-12', 'col-lg-6', 'offset-lg-3', 'option', { 'offset-lg-4': this.props.account === 'PAID' })}>
+          <div className={classNames('col-xs-12', 'col-lg-4', 'offset-lg-4', 'option', { 'offset-lg-4': this.props.account === 'PAID' })}>
             <h3 className="price">NPM Version Change Notifications</h3>
-            <p>Take control of NPM package churn.  Get notified when packages are updated.</p>
+            <p>Take control of NPM package churn.<br/>Get notified when packages are updated.</p>
             
             <p className="price">$24.99/year</p>
-            <button id="unlimited" className="btn btn-lg btn-default" onClick={() => window.location = '/'}>30 Day Trial</button> <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-lg btn-default">Set Up</button>
+            <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-block btn-lg btn-default">Set Up</button>
+            <button id="unlimited" className="btn btn-lg btn-block btn-default" onClick={() => window.location = '/'}>30 Day Trial</button>
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-lg-8 offset-lg-2 option text-xs-left">
-            <h3>Features</h3>
-            <hr/>
-            <h5 className="price">Github Integration</h5>
-            <p>Connect NPM Notifier to your github account and monitor multiple repository package.json updates. Repos are checked daily prior to notification digests being sent, so you can set it and forget it.</p>
-            <h5 className="price">Upload package.json</h5>
+          <div className="col-xs-12 col-lg-6 offset-lg-3 option">
+            <h1 className="price-icon"><i className="fa fa-github"></i></h1>
+            <p>Connect NPM Notifier to your github account and monitor multiple repository package.json updates.</p>
+            <h1 className="price-icon"><i className="fa fa-cloud-upload"></i></h1>
             <p>Don't want to use Github? Manually upload multiple package.json files.</p>
-            <h5 className="price">Email Notifications</h5>
-            <p>Receive a daily digest of changes to the packages you're tracking.</p>
-            <h5 className="price">Slack Notifications</h5>
-            <p>Configure a Slack web hook to receive daily digests to the Slack channel of your choice.</p>
-            <h5 className="price">Full Control</h5>
+            <h1 className="price-icon"><i className="fa fa-envelope-square"></i></h1>
+            <p>Receive a daily email digest of changes to the packages you're tracking.</p>
+            <h1 className="price-icon"><i className="fa fa-slack"></i></h1>
+            <p>Configure a Slack web hook to receive daily digests to Slack channels.</p>
+            <h1 className="price-icon"><i className="fa fa-gears"></i></h1>
             <p>Control notifications globally, or per package.</p>
             <h5 className="price">30 Day Trial</h5>
             <p>Try it out, after 30 days you'll simply stop receiving notifications, but we'll hang on to your account and configuration for an additional 60 days.  If you decide to pay for the year of unlimited notifications, then you'll start receiving notifications again!</p>

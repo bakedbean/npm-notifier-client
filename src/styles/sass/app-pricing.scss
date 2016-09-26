@@ -9,17 +9,20 @@
   .option {
     padding: 10px;
     margin-top: 10px;
-    background: #FFFFFF;
-    color: $orange;
     text-align: center;
     box-model: border-box;
     border: 3px solid transparent;
     background-clip:padding-box;
 
     .price {
-      color: #999999;
+      color: #EFEFEF;
       font-size: 1.25em;
       font-weight: bold;
+    }
+
+    .price-icon {
+      color: #EFEFEF;
+      font-size: 4em;
     }
 
     button {
