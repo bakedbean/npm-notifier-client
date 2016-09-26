@@ -44,8 +44,8 @@ export const Pricing = React.createClass({
             <p>Take control of NPM package churn.<br/>Get notified when packages are updated.</p>
             
             <p className="price">$24.99/year</p>
-            <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-block btn-lg btn-default">Set Up</button>
-            <button id="unlimited" className="btn btn-lg btn-block btn-default" onClick={() => window.location = '/'}>30 Day Trial</button>
+            <button id="unlimited" onClick={() => this.purchase('unlimited')} className="btn btn-block btn-lg btn-default">{this.props.account === 'PAID' ? "Renew" : "Set Up"}</button>
+            {this.props.account === '' && <button id="unlimited" className="btn btn-lg btn-block btn-default" onClick={() => window.location = '/'}>30 Day Trial</button>}
           </div>
         </div>
         <div className="row">
