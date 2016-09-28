@@ -186,3 +186,13 @@ export const saveRepo = (event, repo) => ({
   event: event,
   repo: repo
 });
+
+export const updateRepo = repo => ({
+  type: 'UPDATE_REPO',
+  payload: network().edit({
+    resource: 'api/repo',
+    params: '?token=' + localStorage.getItem('token')
+  }, {
+    repo: repo
+  })
+});

@@ -22,8 +22,10 @@ export const Account = React.createClass({
   handleRepos: function(event) {
     this.props.saveRepo(event.currentTarget.checked ? 'add' : 'remove', this.props.github.get('repos').find(r => String(r.get('id')) === String(event.currentTarget.value)));
   },
+  updateRepo: function(repo) {
+    this.props.updateRepo(repo);
+  },
   setupGithub: function() {
-    console.log('test');
     window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
   },
   save: function() {
@@ -37,7 +39,14 @@ export const Account = React.createClass({
       value={r.get('id')} 
       onChange={this.handleRepos} /> {r.get('name')}</div>)
 
-    let savedRepos = this.props.github.get('saved_repos').map((r, i) => <div key={i}><a href="Javascript: void(0);" onClick={() => this.props.saveRepo('remove', r)}><i className="fa fa-times"></i></a> {r.get('name')}</div>);
+    let savedRepos = this.props.github.get('saved_repos').map((r, i) => {
+      return <tr key={i}>
+        <td><a href="Javascript: void(0);" onClick={() => this.props.saveRepo('remove', r)}><i className="fa fa-times"></i></a> {r.get('name')}</td>
+        <td><input type="checkbox"
+          value={r.pr}
+          onChange={() => this.updateRepo(r)} /></td>
+      </tr>;
+    });
 
     return <div className="row content account">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
@@ -87,7 +96,17 @@ export const Account = React.createClass({
             </div>}
             {this.props.github.get('saved_repos').size > 0 && <div className="repos">
               <strong>Syncing:</strong>
-              {savedRepos}
+              <table className="table table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Repository</th>
+                    <th>Pull Requests</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {savedRepos}
+                </tbody>
+              </table>
             </div>}
           </div>
         </div>}

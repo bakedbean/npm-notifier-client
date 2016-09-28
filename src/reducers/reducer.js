@@ -231,7 +231,8 @@ export default function reducer(state = initialState, action) {
           id: action.repo.get('owner').get('id'),
           login: action.repo.get('owner').get('login')
         },
-        name: action.repo.get('name')
+        name: action.repo.get('name'),
+        pr: false
       });
 
       let index = state.get('github').get('saved_repos').indexOf(state.get('github').get('saved_repos').find(r => r.get('id') === newRepo.get('id')));
@@ -251,6 +252,10 @@ export default function reducer(state = initialState, action) {
       }
 
       return setState(state, state.setIn(['github', 'saved_repos'], repos));
+
+    case 'UPDATE_REPO_FULFILLED':
+      console.log(action.payload);
+      return state;
 
     default: return state;
   }
