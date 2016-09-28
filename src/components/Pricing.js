@@ -52,6 +52,8 @@ export const Pricing = React.createClass({
           <div className="col-xs-12 col-lg-6 offset-lg-3 option">
             <h1 className="price-icon"><i className="fa fa-github"></i></h1>
             <p>Connect NPM Notifier to your github account and monitor multiple repository package.json updates.</p>
+            <h1 className="price-icon"><i className="fa fa-code-fork"></i></h1>
+            <p>Automatically create pull requests with updated dependency versions.</p>
             <h1 className="price-icon"><i className="fa fa-cloud-upload"></i></h1>
             <p>Don't want to use Github? Manually upload multiple package.json files.</p>
             <h1 className="price-icon"><i className="fa fa-envelope-square"></i></h1>
