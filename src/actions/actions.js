@@ -129,7 +129,7 @@ export const updateAlert = alert => ({
 
 export const updateUser = (email, slack, webhook, repos) => ({
   type: 'UPDATE_USER',
-  payload: network().post({
+  payload: network().edit({
     resource: 'api/user',
     params: '?token=' + localStorage.getItem('token')
   }, {
@@ -189,10 +189,5 @@ export const saveRepo = (event, repo) => ({
 
 export const updateRepo = repo => ({
   type: 'UPDATE_REPO',
-  payload: network().edit({
-    resource: 'api/repo',
-    params: '?token=' + localStorage.getItem('token')
-  }, {
-    repo: repo
-  })
+  repo: repo
 });

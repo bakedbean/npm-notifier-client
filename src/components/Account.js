@@ -43,7 +43,7 @@ export const Account = React.createClass({
       return <tr key={i}>
         <td><a href="Javascript: void(0);" onClick={() => this.props.saveRepo('remove', r)}><i className="fa fa-times"></i></a> {r.get('name')}</td>
         <td><input type="checkbox"
-          value={r.pr}
+          checked={r.get('pr')}
           onChange={() => this.updateRepo(r)} /></td>
       </tr>;
     });

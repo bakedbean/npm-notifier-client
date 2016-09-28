@@ -253,9 +253,13 @@ export default function reducer(state = initialState, action) {
 
       return setState(state, state.setIn(['github', 'saved_repos'], repos));
 
-    case 'UPDATE_REPO_FULFILLED':
-      console.log(action.payload);
-      return state;
+    case 'UPDATE_REPO':
+      return setState(state, state.setIn(['github', 'saved_repos'], state.get('github').get('saved_repos').map(r => {
+        if (r.get('id') === action.repo.get('id')) {
+          r = r.set('pr', !r.get('pr'));
+        }
+        return r;
+      })));
 
     default: return state;
   }
