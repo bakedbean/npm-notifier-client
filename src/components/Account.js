@@ -7,6 +7,11 @@ import {Link} from 'react-router';
 import moment from 'moment';
 
 export const Account = React.createClass({
+  getInitialState: function() {
+    return {
+      prInfo: false
+    };
+  },
   componentWillMount: function() {
     if (this.props.location.query.state === 'qzrghtksjh') {
       this.props.setupGithub(this.props.location.query.code);
@@ -27,6 +32,9 @@ export const Account = React.createClass({
   },
   setupGithub: function() {
     window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
+  },
+  showPrInfo: function() {
+    this.setState({ prInfo: !this.state.prInfo });
   },
   save: function() {
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
@@ -94,13 +102,25 @@ export const Account = React.createClass({
             {repos.size > 0 && <div className="repos">
               {repos}
             </div>}
-            {this.props.github.get('saved_repos').size > 0 && <div className="repos">
+            {this.state.prInfo && <div className="repos">
+              <h3><a href="#" onClick={this.showPrInfo}><i className="fa fa-times pull-xs-right"></i></a></h3>
+              <h4>Pull Requests</h4>
+              <p>If pull requests are enabled for a repository, NPM Notifier will perform the following actions when there are package updates:</p>
+              <ul>
+                <li>Create a new branch from <code>master</code> named <code>npm-notifier-updates</code></li>
+                <li>Add a new commit to <code>npm-notifier-updates</code> with any new package versions reflected in <code>package.json</code></li>
+                <li>Add a new pull request titled "NPM Notifier package.json updates"</li>
+                <li>If the <code>npm-notifier-updates</code> branch exists, additional NPM Notifier updates will be added as additional commits</li>
+                <li>All activity will be assigned to the user that authenticates NPM Notifier for oauth token access</li>
+              </ul>
+            </div>}
+            {this.props.github.get('saved_repos').size > 0 && !this.state.prInfo && <div className="repos">
               <strong>Syncing:</strong>
               <table className="table table-sm table-striped">
                 <thead>
                   <tr>
                     <th>Repository</th>
-                    <th>Pull Requests</th>
+                    <th>Pull Requests <a href="#" onClick={this.showPrInfo}><i className="fa fa-info-circle"></i></a></th>
                   </tr>
                 </thead>
                 <tbody>
