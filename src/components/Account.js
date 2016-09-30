@@ -110,7 +110,7 @@ export const Account = React.createClass({
                 <li>Create a new branch from <code>master</code> named <code>npm-notifier-updates</code></li>
                 <li>Add a new commit to <code>npm-notifier-updates</code> with any new package versions reflected in <code>package.json</code></li>
                 <li>Add a new pull request titled "NPM Notifier package.json updates"</li>
-                <li>If the <code>npm-notifier-updates</code> branch exists, additional NPM Notifier updates will be added as additional commits</li>
+                <li>If the <code>npm-notifier-updates</code> branch exists, additional NPM Notifier updates will be added as new commits</li>
                 <li>All activity will be assigned to the user that authenticates NPM Notifier for oauth token access</li>
               </ul>
             </div>}
