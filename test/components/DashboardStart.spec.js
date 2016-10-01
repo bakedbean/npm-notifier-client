@@ -37,7 +37,7 @@ describe('<DashboardStart />', () => {
 
   it('should show manual start button', () => {
     const wrapper = shallow(<DashboardStart {...state} />);
-    expect(wrapper.find('button')).to.have.length(1);
+    expect(wrapper.find('button')).to.have.length(2);
   });
 
   it('should show manual and upload start buttons', () => {
