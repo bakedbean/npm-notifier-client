@@ -8,12 +8,12 @@ export const About = React.createClass({
     return <div className="row content account">
       <div className="col-xs-12 col-lg-6 offset-lg-3">
         <h2>About</h2>
-        <p>My name is Eben Goodman, I'm a full stack developer living in the beautiful state of Vermont.</p>
-        <p>NPM Notifier is a labor born of frustration for me.  
-          Front end development is a total shit show these days, and managing packages via NPM is the epitomy of it all.</p>
-        <p>But alas, it's not the package management tool we need, it is most definitely the package management tool we deserve...</p>
+        <p>My name is Eben Goodman, I'm a full stack developer living in Vermont.</p>
+        <p>NPM Notifier is a labor born of frustration for me.</p>
         <p>I needed a more transparent and effortless way to stay on top of just how out of date my dependencies were getting, so I created NPM Notifier in an effort to solve this problem.</p>
-        <p>I simply want to know when packages publish a new version.  That is what NPM Notifier does.  Nothing more, nothing less.</p>
+        <p>I simply want to know when packages publish a new version.  That is what NPM Notifier does, with some added bells and whistles.</p>
+        <p>NPM Notifier allows connecting to a github account, and can monitor repositories.  You can then opt into having NPM Notifier submit a pull request with an updated package.json when packages are updated.</p>
+        <p><strong>For teams with solid test coverage and integrated CI, this can mean a seamless way to keep projects running with the latest dependencies.</strong></p>
         <hr/>
         <p>NPM Notifier is React, Redux, Immutable and Webpack on the front end, Node, Express, Mongo and some bash and make on the back end.</p>        
         <hr/>
