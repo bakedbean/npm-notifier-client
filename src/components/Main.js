@@ -1,12 +1,15 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Header} from './Header';
 import {Footer} from './Footer';
 
 export const Main = React.createClass({
+  propTypes: {
+    account: PropTypes.string
+  },
   componentWillMount: function() {
     if (localStorage.getItem('token')) {
       this.props.dashboard();
