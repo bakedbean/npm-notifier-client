@@ -60,11 +60,10 @@ export const packagesSave = (packages) => ({
 
 export const updatePackage = ( id, pref ) => ({
   type: 'UPDATE_PACKAGE',
-  payload: network().post({
-    resource: 'api/edit',
-    params: '?token=' + localStorage.getItem('token')
+  payload: network().edit({
+    resource: 'api/packages',
+    params: '/' + id + '/?token=' + localStorage.getItem('token')
   }, {
-    id: id,
     pref: pref
   })
 });
@@ -76,11 +75,9 @@ export const trackDeletedPackage = id => ({
 
 export const deletePackageFromApi = id => ({
   type: 'DELETE_PACKAGE_FROM_API',
-  payload: network().post({
-    resource: 'api/delete',
-    params: '?token=' + localStorage.getItem('token')
-  }, {
-    id: id
+  payload: network().delete({
+    resource: 'api/packages',
+    params: '/' + id + '/?token=' + localStorage.getItem('token')
   })
 });
 
