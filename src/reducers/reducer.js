@@ -46,30 +46,6 @@ function setState(state, newState) {
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
-    case 'PURCHASE_UNLIMITED_PENDING':
-    case 'LOGIN_PENDING':
-      return state;
-
-    case 'PURCHASE_UNLIMITED_FULFILLED':
-    case 'LOGIN_FULFILLED':
-      state = setState(state, state.setIn(['alerts', 'login'], false));
-      return setState(state, state.set('auth', Immutable.fromJS({
-        email: action.payload.email
-      })));
-
-    case 'VALIDATE_PENDING':
-      return setState(state, state.setIn(['loading'], Immutable.fromJS({
-        validation: true
-      })));
-
-    case 'VALIDATE_FULFILLED':
-      if (action.payload.token) {
-        localStorage.setItem('token', action.payload.token);
-        window.location = '/dashboard';
-      } else {
-        return setState(state, state.setIn(['alerts', 'login'], true));
-      }
-
     case 'DASHBOARD_PENDING':
       return setState(state, state.setIn(['loading', 'dashboard'], true));
 
@@ -96,6 +72,17 @@ export default function reducer(state = initialState, action) {
           .setIn(['github', 'saved_repos'], fromJSOrdered(action.payload.github_repos))
           .setIn(['loading', 'dashboard'], false);
       }));
+
+    case 'PURCHASE_UNLIMITED_PENDING':
+    case 'LOGIN_PENDING':
+      return state;
+
+    case 'PURCHASE_UNLIMITED_FULFILLED':
+    case 'LOGIN_FULFILLED':
+      state = setState(state, state.setIn(['alerts', 'login'], false));
+      return setState(state, state.set('auth', Immutable.fromJS({
+        email: action.payload.email
+      })));
 
     case 'PACKAGE_ADD':
       return setState(state, state.set('packages', state.get('packages').push(Immutable.fromJS({ _package: { name: '', isValid: true } }))));
@@ -260,6 +247,19 @@ export default function reducer(state = initialState, action) {
         }
         return r;
       })));
+
+    case 'VALIDATE_PENDING':
+      return setState(state, state.setIn(['loading'], Immutable.fromJS({
+        validation: true
+      })));
+
+    case 'VALIDATE_FULFILLED':
+      if (action.payload.token) {
+        localStorage.setItem('token', action.payload.token);
+        window.location = '/dashboard';
+      } else {
+        return setState(state, state.setIn(['alerts', 'login'], true));
+      }
 
     default: return state;
   }
