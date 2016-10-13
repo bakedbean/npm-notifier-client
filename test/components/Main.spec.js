@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import sinon from 'sinon';
 import {shallow} from 'enzyme';
-import {Main} from '../../src/components/Main';
+import Main from '../../src/components/Main';
 import {expect} from 'chai';
 
 let path = {

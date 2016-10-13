@@ -2,24 +2,29 @@
 
 import React from 'react';
 
-export const LoginCode = React.createClass({
-  getInitialState: function() {
-    return {
+export default class LoginCode extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       code: ''
     };
-  },
-  handleChange: function(event) {
+  }
+
+  handleChange = event => {
     return this.setState({ code: event.target.value });
-  },
-  handleKeypress: function(event) {
+  }
+
+  handleKeypress = event => {
     if (event.key === 'Enter') {
       this.props.validate(this.props.auth.get('email'), this.state.code);
     }
-  },
-  reset: function() {
+  }
+
+  reset() {
     window.location = '/';
-  },
-  render: function() {
+  }
+
+  render() {
     if (!this.props.alerts.get('login')) {
       return <div>
         <h3>A login code has been sent to the email you provided.</h3>
@@ -43,4 +48,10 @@ export const LoginCode = React.createClass({
       </div>;
     }
   }
-});
+}
+
+LoginCode.propTypes = {
+  validate: React.PropTypes.func,
+  auth: React.PropTypes.object,
+  alerts: React.PropTypes.object
+};

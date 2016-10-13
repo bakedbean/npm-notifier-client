@@ -1,13 +1,18 @@
 'use strict';
 
 import React from 'react';
-import {Package} from './Package';
+import Package from './Package';
 
-export const Packages = React.createClass({
-  sort: function(field) {
+export default class Packages extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  sort(field) {
     this.props.sortPackages(field);
-  },
-  render: function() {
+  }
+
+  render() {
     let packages = this.props.packages.map((k,i) => {
       if (k.get('_package').get('version')) {
         return <Package {...this.props} data={k} key={i} />;
@@ -35,4 +40,10 @@ export const Packages = React.createClass({
       </table>;
     }
   }
-});
+}
+
+Packages.propTypes = {
+  sortPackages: React.PropTypes.func,
+  packages: React.PropTypes.object,
+  package_view: React.PropTypes.object
+};

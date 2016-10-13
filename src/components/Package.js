@@ -2,26 +2,31 @@
 
 import React from 'react';
 import moment from 'moment';
-import {PackageEdit} from './PackageEdit';
+import PackageEdit from './PackageEdit';
 
-export const Package = React.createClass({
-  getInitialState: function() {
-    return {
+export default class Package extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       editing: false,
       removing: false
     };
-  },
-  toggleEdit: function() {
+  }
+
+  toggleEdit = () => {
     this.setState({ editing: !this.state.editing, removing: false });
-  },
-  toggleRemove: function() {
+  }
+
+  toggleRemove = () => {
     this.setState({ removing: !this.state.removing, editing: false });
-  },
-  remove: function() {
+  }
+
+  remove = () => {
     this.props.deletePackageRequest(this.props.data.get('_id'));
     this.toggleRemove();
-  },
-  render: function() {
+  }
+
+  render() {
     if (this.props.package_view.get('view') === 'grid') {
       return <div className="col-xs-12 col-sm-4 col-lg-2 package">
         
@@ -75,4 +80,12 @@ export const Package = React.createClass({
       }
     }
   }
-});
+}
+
+Package.propTypes = {
+  data: React.PropTypes.object,
+  toggleRemove: React.PropTypes.func,
+  toggleEdit: React.PropTypes.func,
+  package_view: React.PropTypes.object,
+  loading: React.PropTypes.object
+};

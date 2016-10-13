@@ -2,15 +2,24 @@
 
 import React from 'react';
 
-export const Search = React.createClass({
-  onChange: function(event) {
+export default class Search extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  onChange = event => {
     this.props.searchPackages(event.currentTarget.value);
-  },
-  render: function() {
+  }
+
+  render() {
     return <div style={{ display: 'inline' }}>
       <input type="text" 
         className="search"
         onChange={this.onChange} />
     </div>;
   }
-});
+}
+
+Search.propTypes = {
+  searchPackages: React.PropTypes.func
+};

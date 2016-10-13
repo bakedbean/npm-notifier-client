@@ -6,24 +6,31 @@ import {actions} from '../actions';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 
-export const Pricing = React.createClass({
-  componentWillMount: function() {
+export default class Pricing extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount = () => {
     this.handler = StripeCheckout.configure({
       key: 'pk_live_wwU0CJij8yw3hoIP6i90YtB0',
       image: 'img/npm-notifier-logo.png',
       locale: 'auto',
       token: token => this.props.purchaseUnlimited(token)
     });
-  },
-  componentWillUnmount: function() {
+  }
+
+  componentWillUnmount = () => {
     this.handler.close();
-  },
-  componentDidUpdate: function() {
+  }
+
+  componentDidUpdate = () => {
     if (this.props.auth) {
       this.props.history.push('/login');
     }
-  },
-  purchase: function(type) {
+  }
+
+  purchase = type => {
     if (type === 'free') {
       window.location = '/';
     } else {
@@ -33,8 +40,9 @@ export const Pricing = React.createClass({
         amount: 2499
       });
     }
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="row content pricing">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>NPM Notifier Pricing</h2>
@@ -77,7 +85,12 @@ export const Pricing = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+Pricing.propTypes = {
+  auth: React.PropTypes.object,
+  account: React.PropTypes.string
+};
 
 function mapStateToProps(state, ownProps) {
   return {

@@ -2,11 +2,16 @@
 
 import React from 'react';
 
-export const PackageEdit = React.createClass({
-  handleChange: function(pref) {
+export default class PackageEdit extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleChange = pref => {
     this.props.updatePackage(this.props.data.get('_id'), pref);
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="row">
       <div className="col-xs-4">
         <input type="checkbox"
@@ -31,4 +36,11 @@ export const PackageEdit = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+PackageEdit.propTypes = {
+  updatePackage: React.PropTypes.func,
+  toggleEdit: React.PropTypes.func,
+  toggleRemove: React.PropTypes.func,
+  data: React.PropTypes.object
+};

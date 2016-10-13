@@ -3,26 +3,32 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
-import {Header} from './Header';
-import {Footer} from './Footer';
+import Header from './Header';
+import Footer from './Footer';
 
-export const Main = React.createClass({
-  propTypes: {
-    account: PropTypes.string
-  },
-  componentWillMount: function() {
+export default class Main extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
     if (localStorage.getItem('token')) {
       this.props.dashboard();
     }
-  },
-  render: function() {
+  }
+
+  render() {
     return <div id="main-wrapper" className="container-fluid">
         {this.props.location.pathname !== '/signin' && <Header {...this.props} />}
         {this.props.children}
         {this.props.location.pathname !== '/signin' && <Footer {...this.props} />}
       </div>;
   }
-});
+}
+
+Main.propTypes = {
+  account: PropTypes.string
+};
 
 function mapStateToProps(state) {
   return {

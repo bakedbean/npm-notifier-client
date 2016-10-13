@@ -4,11 +4,16 @@ import React from 'react';
 import {server} from '../utils/platform';
 import Dropzone from 'react-dropzone';
 
-export const UploadPackages = React.createClass({
-  onDrop: function(files) {
+export default class UploadPackages extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  onDrop = files => {
     this.props.uploadFile(server() + '/api/upload?token=' + localStorage.getItem('token'), files[0]);
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="row">
       <div className="col-xs-12 col-lg-6 offset-lg-3">
         {!this.props.loading.get('upload') && <Dropzone 
@@ -26,4 +31,9 @@ export const UploadPackages = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+UploadPackages.propTypes = {
+  uploadFile: React.PropTypes.func,
+  loading: React.PropTypes.object
+};

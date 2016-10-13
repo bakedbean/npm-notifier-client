@@ -3,11 +3,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
-import {LoginEmail} from './LoginEmail';
-import {LoginCode} from './LoginCode';
+import LoginEmail from './LoginEmail';
+import LoginCode from './LoginCode';
 
-export const Signin = React.createClass({
-  render: function() {
+export default class Signin extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return <div className="row signin content-signin">
       <div className="col-xs-12 offset-lg-4 col-lg-4 signin text-xs-center">
         {!this.props.auth.get('email') && <h3>Sign into NPM Notifier</h3>}
@@ -16,7 +20,11 @@ export const Signin = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+Signin.propTypes = {
+  auth: React.PropTypes.object
+};
 
 function mapStateToProps(state) {
   return {

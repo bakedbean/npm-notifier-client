@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import sinon from 'sinon';
 import {List} from 'immutable';
 import {shallow } from 'enzyme';
-import {Dashboard} from '../../src/components/Dashboard';
+import Dashboard from '../../src/components/Dashboard';
 import {expect} from 'chai';
 import Data from '../mocks/state';
 import Package from '../mocks/package';

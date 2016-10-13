@@ -3,8 +3,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export const About = React.createClass({
-  render: function() {
+export default class About extends React.Component {
+  render() {
     return <div className="row content account">
       <div className="col-xs-12 col-lg-6 offset-lg-3">
         <h2>About</h2>
@@ -24,4 +24,4 @@ export const About = React.createClass({
       </div>
     </div>;
   }
-});
+}

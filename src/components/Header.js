@@ -3,23 +3,28 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export const Header = React.createClass({
-  getInitialState: function() {
-    return {
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       isLoggedIn: false
     };
-  },
-  componentWillMount: function() {
+  }
+
+  componentWillMount() {
     this.setState({ isLoggedIn: localStorage.getItem('token') });
-  },
-  componentWillReceiveProps: function() {
+  }
+
+  componentWillReceiveProps() {
     this.setState({ isLoggedIn: localStorage.getItem('token') });
-  },
-  signOut: function() {
+  }
+
+  signOut() {
     localStorage.removeItem('token');
     window.location = '/';
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="row">
       <div className="col-xs-12 col-lg-8 header">
         <div className="hidden-md-up pull-xs-right" style={{ fontSize: '1.5em' }}>
@@ -55,4 +60,8 @@ export const Header = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+Header.propTypes = {
+  account: React.PropTypes.string
+};

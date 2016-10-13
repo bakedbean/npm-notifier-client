@@ -9,9 +9,9 @@ import {PricingContainer} from './components/Pricing';
 import {DashboardContainer} from './components/Dashboard';
 import {AccountContainer} from './components/Account';
 import {ContactContainer} from './components/Contact';
-import {Terms} from './components/Terms';
-import {Privacy} from './components/Privacy';
-import {About} from './components/About';
+import Terms from './components/Terms';
+import Privacy from './components/Privacy';
+import About from './components/About';
 import App from './components/App';
 
 function isLoggedIn(nextState, replace, callback) {

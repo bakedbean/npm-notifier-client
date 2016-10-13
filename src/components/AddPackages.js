@@ -3,36 +3,46 @@
 import React from 'react';
 import request from '../utils/request';
 import {fromJS} from 'immutable';
-import {AddPackage} from './AddPackage';
-import {UploadPackages} from './UploadPackages';
+import AddPackage from './AddPackage';
+import UploadPackages from './UploadPackages';
 
-export const AddPackages = React.createClass({
-  componentWillMount: function() {
+export default class AddPackages extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
     this.props.packageAdd();
-  },
-  componentWillReceiveProps: function(nextProps) {
+  }
+
+  componentWillReceiveProps(nextProps) {
     if (nextProps.packages.size === nextProps.savedPackages.size && !nextProps.packages.find(p => !p.get('_package').get('isValid'))) {
       this.cancel();
     }
-  },
-  addMorePackages: function() {
+  }
+
+  addMorePackages() {
     this.props.packageAdd();
-  },
-  removePackage: function(index) {
+  }
+
+  removePackage(index) {
     this.props.packageRemove(index);
 
     if (this.props.packages.size <= 1) {
       this.props.toggleAddPackages();
     }
-  },
-  cancel: function() {
+  }
+
+  cancel() {
     this.props.packagesReset();
     this.props.toggleAddPackages();
-  },
-  validate: function() {
+  }
+
+  validate() {
     this.props.packagesSave(this.props.packages);
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="add-panel">
         <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
         {this.props.uploading && <UploadPackages {...this.props} />}
@@ -56,4 +66,14 @@ export const AddPackages = React.createClass({
         </div>}
       </div>;
   }
-});
+}
+
+AddPackages.propTypes = {
+  uploading: React.PropTypes.bool,
+  packages: React.PropTypes.object,
+  packageAdd: React.PropTypes.func,
+  packagesSave: React.PropTypes.func,
+  packagesReset: React.PropTypes.func,
+  toggleAddPackages: React.PropTypes.func,
+  packageRemove: React.PropTypes.func
+};

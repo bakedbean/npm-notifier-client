@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import sinon from 'sinon';
 import {fromJS, List} from 'immutable';
 import {shallow} from 'enzyme';
-import {DashboardStart} from '../../src/components/DashboardStart';
+import DashboardStart from '../../src/components/DashboardStart';
 import {expect} from 'chai';
 import Data from '../mocks/state';
 import Package from '../mocks/package';

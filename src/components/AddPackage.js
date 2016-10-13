@@ -3,13 +3,15 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export const AddPackage = React.createClass({
-  getInitialState: function() {
-    return {
+export default class AddPackage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       dupe: false
     };
-  },
-  handleChange: function(event) {
+  }
+
+  handleChange = event => {
     let duplicate = this.props.savedPackages.find(p => p.get('_package').get('name') === event.target.value);
     if (duplicate) {
       this.setState({ dupe: true });
@@ -17,8 +19,9 @@ export const AddPackage = React.createClass({
       this.setState({ dupe: false });
     }
     this.props.packageUpdate(this.props.index, event.target.value);
-  },
-  render: function() {
+  }
+
+  render() {
     return <div className="row">
       <div className="col-xs-12 col-lg-6 offset-lg-3" style={{ padding: '10px 0 0 0' }}>
         <table style={{ width: '95%' }}> 
@@ -43,4 +46,12 @@ export const AddPackage = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+AddPackage.propTypes = {
+  savedPackages: React.PropTypes.object,
+  packageUpdate: React.PropTypes.func,
+  removePackage: React.PropTypes.func,
+  index: React.PropTypes.number,
+  package: React.PropTypes.object
+};

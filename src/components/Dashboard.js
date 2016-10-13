@@ -3,39 +3,46 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
-import {DashboardStart} from './DashboardStart';
-import {DashboardNav} from './DashboardNav';
-import {AddPackages} from './AddPackages';
-import {Packages} from './Packages';
+import DashboardStart from './DashboardStart';
+import DashboardNav from './DashboardNav';
+import AddPackages from './AddPackages';
+import Packages from './Packages';
 
-export const Dashboard = React.createClass({
-  getInitialState: function() {
-    return {
+export default class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       view: 'list',
       adding: false,
       uploading: false,
       searching: false
     };
-  },
-  componentWillReceiveProps: function(nextProps) {
+  }
+
+  componentWillReceiveProps(nextProps) {
     if (nextProps.alerts.get('upload')) {
       setTimeout(() => this.props.updateAlert('upload'), 5000);
     }
-  },
-  toggleAddPackages: function() {
+  }
+
+  toggleAddPackages = () => {
     return this.setState({ adding: !this.state.adding, uploading: false });
-  },
-  toggleFileUpload: function() {
+  }
+
+  toggleFileUpload = () => {
     this.setState({ adding: !this.state.adding, uploading: !this.state.uploading });
-  },
-  toggleSearch: function() {
+  }
+
+  toggleSearch = () => {
     this.setState({ searching: !this.state.searching });
     if (this.state.searching) this.props.packagesReset();
-  },
-  toggleView: function(view) {
+  }
+
+  toggleView = view => {
     this.props.dashboardView(view);
-  },
-  render: function() {
+  }
+
+  render() {
     if (this.props.packages.size < 1 && !this.state.adding) {
       return <DashboardStart {...this.props} toggleAddPackages={this.toggleAddPackages} toggleFileUpload={this.toggleFileUpload} />;
     } else {
@@ -65,7 +72,17 @@ export const Dashboard = React.createClass({
       </div>;
     }
   }
-});
+}
+
+Dashboard.propTypes = {
+  auth: React.PropTypes.object,
+  account: React.PropTypes.string,
+  alerts: React.PropTypes.object,
+  packages: React.PropTypes.object,
+  savedPackages: React.PropTypes.object,
+  loading: React.PropTypes.object,
+  package_view: React.PropTypes.object
+};
 
 function mapStateToProps(state) {
   return {

@@ -6,40 +6,49 @@ import {actions} from '../actions';
 import {Link} from 'react-router';
 import moment from 'moment';
 
-export const Account = React.createClass({
-  getInitialState: function() {
-    return {
+export default class Account extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       prInfo: false
     };
-  },
-  componentWillMount: function() {
+  }
+
+  componentWillMount = () => {
     if (this.props.location.query.state === 'qzrghtksjh') {
       this.props.setupGithub(this.props.location.query.code);
     }
-  },
-  handleChange: function(pref, event) {
+  }
+
+  handleChange = (pref, event) => {
     if (event.currentTarget.type === 'checkbox') {
       this.props.updatePref(pref, !this.props[pref]);
     } else {
       this.props.updatePref(pref, event.currentTarget.value);
     }
-  },
-  handleRepos: function(event) {
+  }
+
+  handleRepos = event => {
     this.props.saveRepo(event.currentTarget.checked ? 'add' : 'remove', this.props.github.get('repos').find(r => String(r.get('id')) === String(event.currentTarget.value)));
-  },
-  updateRepo: function(repo) {
+  }
+  
+  updateRepo = repo => {
     this.props.updateRepo(repo);
-  },
-  setupGithub: function() {
+  }
+
+  setupGithub = () => {
     window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
-  },
-  showPrInfo: function() {
+  }
+
+  showPrInfo = () => {
     this.setState({ prInfo: !this.state.prInfo });
-  },
-  save: function() {
+  }
+
+  save = () => {
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
-  },
-  render: function() {
+  }
+
+  render() {
     let duration = 365;
     if (this.props.account !== 'PAID') duration = 30;
 
@@ -170,7 +179,25 @@ export const Account = React.createClass({
       </div>
     </div>;
   }
-});
+}
+
+Account.propTypes = {
+  loading: React.PropTypes.object,
+  account: React.PropTypes.string,
+  lastPaid: React.PropTypes.string,
+  slack_webhook_url: React.PropTypes.string,
+  email_pref: React.PropTypes.bool,
+  slack_pref: React.PropTypes.bool,
+  alerts: React.PropTypes.object,
+  packages: React.PropTypes.object,
+  github: React.PropTypes.object,
+  setupGithub: React.PropTypes.func,
+  updatePref: React.PropTypes.func,
+  setupRepos: React.PropTypes.func,
+  saveRepo: React.PropTypes.func,
+  updateRepo: React.PropTypes.func,
+  updateUser: React.PropTypes.func
+};
 
 function mapStateToProps(state) {
   return {

@@ -2,36 +2,42 @@
 
 import React from 'react';
 
-export const LoginEmail = React.createClass({
-  getInitialState: function() {
-    return {
+export default class LoginEmail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       email: '',
       valid: true
     };
-  },
-  handleChange: function(event) {
+  }
+
+  handleChange = event => {
     return this.setState({ email: event.currentTarget.value });
-  },
-  validate: function() {
+  }
+
+  validate = () => {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return (re.test(this.state.email));
-  },
-  reValidate: function(e) {
+  }
+
+  reValidate = e => {
     if (!this.state.valid && this.validate()) {
       this.setState({ valid: true });
     }
     if (e.key === 'Enter') {
       this.props.login(this.state.email);
     }
-  },
-  doLogin: function() {
+  }
+
+  doLogin = () => {
     if (this.validate()) {
       this.props.login(this.state.email);
     } else {
       this.setState({ valid: false });
     }
-  },
-  render: function() {
+  }
+
+  render() {
     return <div>
       <input type="email" 
         name="email" 
@@ -47,4 +53,9 @@ export const LoginEmail = React.createClass({
       <button type="button" onClick={() => this.doLogin()} disabled={!this.state.valid} className="btn btn-lg btn-default">{this.props.signin ? "Request Sign In Code" : "Set Up"}</button>
     </div>;
   }
-});
+}
+
+LoginEmail.propTypes = {
+  login: React.PropTypes.func,
+  signin: React.PropTypes.bool
+};

@@ -2,8 +2,12 @@
 
 import React from 'react';
 
-export const DashboardStart = React.createClass({
-  render: function() {
+export default class DashboardStart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return <div className="row dashboard content start">
       {!this.props.loading.get('dashboard') && <div className="col-xs-12 col-lg-4 offset-lg-4">
         <button className="btn btn-lg btn-block" onClick={this.props.toggleAddPackages} style={{ padding: '20px' }}>Manually Add Packages</button>
@@ -14,4 +18,10 @@ export const DashboardStart = React.createClass({
       </div>}
     </div>;
   }
-});
+}
+
+DashboardStart.propTypes = {
+  loading: React.PropTypes.object,
+  toggleAddPackages: React.PropTypes.func,
+  toggleFileUpload: React.PropTypes.func
+};

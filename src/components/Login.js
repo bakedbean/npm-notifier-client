@@ -3,11 +3,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
-import {LoginEmail} from './LoginEmail';
-import {LoginCode} from './LoginCode';
+import LoginEmail from './LoginEmail';
+import LoginCode from './LoginCode';
 
-export const Login = React.createClass({
-  render: function() {
+export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return <div className="row login content">
       <div className="col-xs-12 offset-lg-4 col-lg-4 text-xs-center">
         {!this.props.auth.get('email') && <h3>Manage NPM packages<br/>simply and easily.</h3>}
@@ -16,7 +20,7 @@ export const Login = React.createClass({
       </div>
     </div>;
   }
-});
+}
 
 function mapStateToProps(state) {
   return {

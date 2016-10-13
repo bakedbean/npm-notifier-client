@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-export const Terms = React.createClass({
-  render: function() {
+export default class Terms extends React.Component {
+  render() {
     return <div className="row content account">
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>Terms</h2>
@@ -24,4 +24,4 @@ export const Terms = React.createClass({
       </div>
     </div>;
   }
-});
+};
