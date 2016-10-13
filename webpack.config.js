@@ -21,6 +21,9 @@ var config = getConfig({
   devServer: {
     hot: true,
     headers: { 'Access-Control-Allow-Origin': '*' }
+  },
+  replace: {
+    'config': './config.json'
   }
 });
 

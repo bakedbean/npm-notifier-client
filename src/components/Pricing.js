@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Link} from 'react-router';
 import classNames from 'classnames';
+import config from 'config';
 
 export default class Pricing extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Pricing extends React.Component {
 
   componentWillMount = () => {
     this.handler = StripeCheckout.configure({
-      key: 'pk_live_wwU0CJij8yw3hoIP6i90YtB0',
+      key: config.stripe_key,
       image: 'img/npm-notifier-logo.png',
       locale: 'auto',
       token: token => this.props.purchaseUnlimited(token)
@@ -37,7 +38,7 @@ export default class Pricing extends React.Component {
       this.handler.open({
         name: 'NPM Notifier',
         description: 'Unlimited Notifications',
-        amount: 2499
+        amount: config.cost
       });
     }
   }
