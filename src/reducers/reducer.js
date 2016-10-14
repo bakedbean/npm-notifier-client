@@ -52,6 +52,7 @@ export default function reducer(state = initialState, action) {
     case 'DASHBOARD_REJECTED':
       localStorage.removeItem('token');
       window.location = '/';
+      return state;
 
     case 'DASHBOARD_FULFILLED':
       if (!action.payload.success && action.payload.message === 'Failed to authenticate token') {
