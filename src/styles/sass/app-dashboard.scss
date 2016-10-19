@@ -21,7 +21,7 @@
   &.start {
     align-items: center;
 
-    button {
+    button, a {
       margin-top: 5px;
       background-color: #FFFFFF;
       color: #FF9900;
@@ -29,6 +29,10 @@
       &:hover {
         background-color: #ffcc99;
         color: #FFFFFF;
+      }
+
+      &:visited {
+        color: #FF9900;
       }
     }
   }
