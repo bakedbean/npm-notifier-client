@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Modal from 'react-modal';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Link} from 'react-router';
@@ -10,7 +11,7 @@ export default class Account extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      prInfo: false
+      showModal: false
     };
   }
 
@@ -40,12 +41,12 @@ export default class Account extends React.Component {
     window.location = 'https://github.com/login/oauth/authorize?client_id=' + this.props.github.get('id') + '&scope=repo&state=qzrghtksjh';
   }
 
-  showPrInfo = () => {
-    this.setState({ prInfo: !this.state.prInfo });
-  }
-
   save = () => {
     this.props.updateUser(this.props.email_pref, this.props.slack_pref, this.props.slack_webhook_url, this.props.github.get('saved_repos'));
+  }
+
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
@@ -66,6 +67,33 @@ export default class Account extends React.Component {
     });
 
     return <div className="row content account">
+      <Modal
+        ref="mymodal"
+        isOpen={this.state.showModal}
+        closeTimeoutMS={150}
+        onRequestClose={this.toggleModal}
+        className="modal-dialog"
+        overlayClassName="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="close" onClick={this.toggleModal}>
+                <span aria-hidden="true">&times;</span>
+                <span className="sr-only">Close</span>
+              </button>
+              <h4 className="modal-title">Pull Requests</h4>
+            </div>
+            <div className="modal-body">
+              <p>If pull requests are enabled for a repository, NPM Notifier will perform the following actions when there are package updates:</p>
+              <ul>
+                <li>Create a new branch from <code>master</code> named <code>npm-notifier-updates</code></li>
+                <li>Add a new commit to <code>npm-notifier-updates</code> with any new package versions reflected in <code>package.json</code></li>
+                <li>Add a new pull request titled "NPM Notifier package.json updates"</li>
+                <li>If the <code>npm-notifier-updates</code> branch exists, additional NPM Notifier updates will be added as new commits</li>
+                <li>All activity will be assigned to the user that authenticates NPM Notifier for oauth token access</li>
+              </ul>
+            </div>
+          </div>
+      </Modal>
       <div className="col-xs-12" style={{ marginTop: '20px' }}>
         <h2>Account</h2>
         <div className="row">
@@ -111,25 +139,13 @@ export default class Account extends React.Component {
             {repos.size > 0 && <div className="repos">
               {repos}
             </div>}
-            {this.state.prInfo && <div className="repos">
-              <h3><a href="#" onClick={this.showPrInfo}><i className="fa fa-times pull-xs-right"></i></a></h3>
-              <h4>Pull Requests</h4>
-              <p>If pull requests are enabled for a repository, NPM Notifier will perform the following actions when there are package updates:</p>
-              <ul>
-                <li>Create a new branch from <code>master</code> named <code>npm-notifier-updates</code></li>
-                <li>Add a new commit to <code>npm-notifier-updates</code> with any new package versions reflected in <code>package.json</code></li>
-                <li>Add a new pull request titled "NPM Notifier package.json updates"</li>
-                <li>If the <code>npm-notifier-updates</code> branch exists, additional NPM Notifier updates will be added as new commits</li>
-                <li>All activity will be assigned to the user that authenticates NPM Notifier for oauth token access</li>
-              </ul>
-            </div>}
             {this.props.github.get('saved_repos').size > 0 && !this.state.prInfo && <div className="repos">
               <strong>Syncing:</strong>
               <table className="table table-sm table-striped">
                 <thead>
                   <tr>
                     <th>Repository</th>
-                    <th>Pull Requests <a href="#" onClick={this.showPrInfo}><i className="fa fa-info-circle"></i></a></th>
+                    <th>Pull Requests <a href="#" onClick={this.toggleModal}><i className="fa fa-info-circle"></i></a></th>
                   </tr>
                 </thead>
                 <tbody>
