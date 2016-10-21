@@ -13,6 +13,14 @@
   background-color: #FF9900;
   color: #FFFFFF;
 
+  a {
+    font-size: 1.25em;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+
   h3 {
     line-height: 1.25em;
   }

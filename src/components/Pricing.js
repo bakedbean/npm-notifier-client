@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
-import Modal from 'react-modal';
 import {connect} from 'react-redux';
 import {actions} from '../actions';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 import config from 'config';
+import How from './How';
 
 export default class Pricing extends React.Component {
   constructor(props) {
@@ -53,36 +53,7 @@ export default class Pricing extends React.Component {
 
   render() {
     return <div>
-      <Modal
-        ref="mymodal"
-        isOpen={this.state.showModal}
-        closeTimeoutMS={150}
-        onRequestClose={this.toggleModal}
-        className="modal-dialog"
-        overlayClassName="modal">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" onClick={this.toggleModal}>
-                <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
-              </button>
-              <h4 className="modal-title">How it works</h4>
-            </div>
-            <div className="modal-body">
-              <p>After setting up an account, you'll be prompted to add some packages to manage.</p>
-              <p>NPM Notifier offers three ways to manage packages:</p>
-              <ul>
-                <li>Manually add some packages</li>
-                <li>Upload one or more package.json manifests</li>
-                <li>Connect NPM Notifier to your github account using OAuth and monitor multiple repositories (This only works for repos that have a package.json at the root)</li>
-              </ul>
-              <p>NPM Notifier then scans your packages each night and looks for packages that have changed versions.</p>
-              <p>Based on your configuration preferences, NPM Notifier will send an email digest and or Slack post with the packages that have changed.</p>
-              <p>If you've connected to a github account, NPM Notifier also queries the github API each night to refresh the packages being managed.</p>
-              <p>The github integration also allows for NPM Notifier to submit pull requests with any package changes. In environments with solid test suites and continuous integration, this can mean never again having to manually manage dependency versions.</p>
-            </div>
-          </div>
-      </Modal>
+      <How show={this.state.showModal} toggle={this.toggleModal} />
 
       <div className="row content pricing">
         <div className="col-xs-12" style={{ marginTop: '20px' }}>
