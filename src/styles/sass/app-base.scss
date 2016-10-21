@@ -66,11 +66,15 @@ button {
 
 a {
   color: $lightorange;
-}
 
-a:hover {
-  color: $orange;
-  text-decoration: underline !important;
+  &:hover {
+    color: #FFFFFF;
+    text-decoration: underline !important;
+  }
+
+  &:visited {
+    color: $lightorange;
+  }
 }
 
 #root {
@@ -87,6 +91,15 @@ a:hover {
 
   span {
     color: $lightorange;
+  }
+
+  a {
+    &:hover {
+      color: $orange;
+    }
+    &:visited {
+      color: $orange;
+    }
   }
 }
 

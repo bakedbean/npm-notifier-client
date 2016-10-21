@@ -21,6 +21,14 @@
         text-align: center;
         padding: 4px 6px;
         text-decoration: none;
+
+        &:hover {
+          color: $orange;
+        }
+
+        &:visited {
+          color: $orange;
+        }
       }
     }
   }
