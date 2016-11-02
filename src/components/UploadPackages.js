@@ -15,7 +15,7 @@ export default class UploadPackages extends React.Component {
 
   render() {
     return <div className="row">
-      <div className="col-xs-12 col-lg-6 offset-lg-3">
+      <div className="col-xs-12">
         {!this.props.loading.get('upload') && <Dropzone 
           onDrop={this.onDrop} 
           accept="application/json"

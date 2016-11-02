@@ -48,55 +48,42 @@ export default class Contact extends React.Component {
 
   render() {
     return <div className="row content account">
-      {!this.state.sent && <div className="col-xs-12" style={{ marginTop: '20px' }}>
+      {!this.state.sent && <div className="col-xs-12 col-lg-4 offset-lg-4" style={{ marginTop: '20px' }}>
         <h2>Contact</h2>
-        <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-4 form-group">
-            Name:
-            <input type="text" 
-              name="name" 
-              className="form-control" 
-              value={this.state.name}
-              onChange={this.handleChange} />
-          </div>
+        <div className="form-group">
+          Name:
+          <input type="text" 
+            name="name" 
+            className="form-control" 
+            value={this.state.name}
+            onChange={this.handleChange} />
         </div>
-        <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-4 form-group">
-            Email:
-            <input type="email" 
-              name="email" 
-              className="form-control" 
-              onKeyPress={this.reValidate()}
-              value={this.state.email}
-              onChange={this.handleChange} />
+        <div className="form-group">
+          Email:
+          <input type="email" 
+            name="email" 
+            className="form-control" 
+            onKeyPress={this.reValidate()}
+            value={this.state.email}
+            onChange={this.handleChange} />
 
-            {!this.state.valid && <div className="alert alert-danger">Invalid email address</div>}
-          </div>
+          {!this.state.valid && <div className="alert alert-danger">Invalid email address</div>}
         </div>
-        <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-4 form-group">
-            Message:
-            <textarea name="comments" 
-              className="form-control" 
-              value={this.state.comments}
-              onChange={this.handleChange} />
-          </div>
+        <div className="form-group">
+          Message:
+          <textarea name="comments" 
+            className="form-control" 
+            value={this.state.comments}
+            onChange={this.handleChange} />
         </div>
-        <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-4 form-group text-xs-center text-lg-center">
-            <button className="btn btn-lg" onClick={() => this.send()}>Send</button>
-          </div>
+        <div className="form-group text-xs-center text-lg-center">
+          <button className="btn btn-lg" onClick={() => this.send()}>Send</button>
         </div>
       </div>}
-      {this.state.sent && <div className="col-xs-12" style={{ marginTop: '20px' }}>
+      {this.state.sent && <div className="col-xs-12 col-lg-4 offset-lg-4" style={{ marginTop: '20px' }}>
         <h2>Contact</h2>
-        <div className="row">
-          <div className="col-xs-12 col-lg-4 offset-lg-4">
-            Thanks for contacting me.  I'll be in touch soon.
-
-            - Eben
-          </div>
-        </div>
+        <p>Thanks for contacting me.  I'll be in touch soon.</p>
+        <p>- Eben</p>
       </div>}
     </div>;
   }

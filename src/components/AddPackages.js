@@ -43,7 +43,7 @@ export default class AddPackages extends React.Component {
   }
 
   render() {
-    return <div className="add-panel">
+    return <div className="add-panel col-xs-12 col-lg-6 offset-lg-3">
         <h3><a href="#" onClick={() => this.cancel()}><i className="fa fa-times"></i></a></h3>
         {this.props.uploading && <UploadPackages {...this.props} />}
         {!this.props.uploading && this.props.packages.map((k, i) => {

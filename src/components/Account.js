@@ -94,35 +94,25 @@ export default class Account extends React.Component {
             </div>
           </div>
       </Modal>
-      <div className="col-xs-12" style={{ marginTop: '20px' }}>
+      <div className="col-xs-12 col-lg-6 offset-lg-3" style={{ marginTop: '20px' }}>
         <h2>Account</h2>
-        <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Account Type:</strong> {this.props.account === 'FREE' && "Trial"} {this.props.account === 'PAID' && "Paid"}
-          </div>
+        <div className="section">
+          <strong>Type:</strong> {this.props.account === 'FREE' && "Trial"} {this.props.account === 'PAID' && "Paid"}<br/>
+          <strong>Created:</strong> {moment(this.props.lastPaid).format('MM/DD/YYYY')} (Expires {moment(this.props.lastPaid).to(moment(this.props.lastPaid).add(duration, 'days'))}) <Link to="/pricing">Renew</Link>
         </div>
-        <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Account:</strong> created {moment(this.props.lastPaid).format('MM/DD/YYYY')} (Expires {moment(this.props.lastPaid).to(moment(this.props.lastPaid).add(duration, 'days'))}) <Link to="/pricing">Renew</Link>
-          </div>
+        <div className="section">
+          <strong>Currently tracking:</strong> {this.props.packages.size} packages
         </div>
-        <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Currently tracking:</strong> {this.props.packages.size} packages
-          </div>
-        </div>
-        {this.props.github.get('token') === '' && <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Github Integration</strong>
-            <p>
-              Configure github repos to monitor package.json changes and update the packages you're tracking automatically.
-            </p>
-            <p>
-              <button className="btn btn-sm" onClick={this.setupGithub}><i className="fa fa-github"></i> Configure</button>
-            </p>
-          </div>
+        {this.props.github.get('token') === '' && <div className="section">
+          <strong>Github Integration</strong>
+          <p>
+            Configure github repos to monitor package.json changes and update the packages you're tracking automatically.
+          </p>
+          <p>
+            <button className="btn btn-sm" onClick={this.setupGithub}><i className="fa fa-github"></i> Configure</button>
+          </p>
         </div>}
-        {this.props.alerts.get('github') && <div className="col-xs-12 col-lg-6 offset-lg-3 alert alert-danger">
+        {this.props.alerts.get('github') && <div className="alert alert-danger">
           <strong>Github Integration</strong>
           <p>
             Uh oh, looks like there was a problem connecting to the Github API.<br/>You may need re-authorize NPM Notifier?
@@ -132,7 +122,7 @@ export default class Account extends React.Component {
           </p>
         </div>}
         {this.props.github.get('token') !== '' && !this.props.alerts.get('github') && <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
+          <div className="section">
             <strong>Github Integration</strong>
             <p><button className="btn btn-sm" onClick={() => this.props.setupRepos(this.props.github.get('token'))}><i className="fa fa-github"></i> Configure Repositories</button></p>
             {repos.size > 0 && <p><strong>Choose repositories to sync:</strong><br/><small>NOTE: Repositories without a top level package.json will be ignored.</small></p>}
@@ -155,42 +145,38 @@ export default class Account extends React.Component {
             </div>}
           </div>
         </div>}
-        <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section">
-            <strong>Notification Preferences:</strong>
-            <p>
-              <span className="preference"><input type="checkbox" 
-                value="email_pref"
-                checked={this.props.email_pref}
-                onChange={this.handleChange.bind(this, 'email_pref')} /> Email Notifications</span>
-              <span className="preference"><input type="checkbox" 
-                value="slack_pref" 
-                checked={this.props.slack_pref} 
-                onChange={this.handleChange.bind(this, 'slack_pref')} /> Slack Notifications</span>
-            </p>
-            {this.props.slack_pref && <p>Slack Webhook URL:<br/>
-              <input type="text" 
-                className="form-control" 
-                name="slack_webhook_url" 
-                placeholder="https://hooks.slack.com/services/..."
-                value={this.props.slack_webhook_url}
-                onChange={this.handleChange.bind(this, 'slack_webhook_url')} />
-            </p>}
-          </div>
+        <div className="section">
+          <strong>Notification Preferences:</strong>
+          <p>
+            <span className="preference"><input type="checkbox" 
+              value="email_pref"
+              checked={this.props.email_pref}
+              onChange={this.handleChange.bind(this, 'email_pref')} /> Email Notifications</span>
+            <span className="preference"><input type="checkbox" 
+              value="slack_pref" 
+              checked={this.props.slack_pref} 
+              onChange={this.handleChange.bind(this, 'slack_pref')} /> Slack Notifications</span>
+          </p>
+          {this.props.slack_pref && <p>Slack Webhook URL:<br/>
+            <input type="text" 
+              className="form-control" 
+              name="slack_webhook_url" 
+              placeholder="https://hooks.slack.com/services/..."
+              value={this.props.slack_webhook_url}
+              onChange={this.handleChange.bind(this, 'slack_webhook_url')} />
+          </p>}
         </div>
         {this.props.account !== 'PAID' && <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 section text-xs-center text-lg-center">
+          <div className="section text-xs-center text-lg-center">
             Upgrade to <Link to="/pricing">paid</Link> and keep receiving notifications.
           </div>
         </div>}
-        <div className="row">
-          <div className="col-xs-12 col-lg-6 offset-lg-3 text-xs-center text-lg-center">
-            <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>
-            <button className="btn btn-lg" onClick={() => window.location = '/'}><span className="hidden-xs-down">Back to Dashboard</span><span className="hidden-sm-up"><i className="fa fa-dashboard"></i></span></button>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-          </div>
+        <div className="text-xs-center text-lg-center">
+          <button className="btn btn-lg" onClick={() => this.save()}><span className="hidden-xs-down">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : "Save Changes"}</span><span className="hidden-sm-up">{this.props.loading.get('account') ? <i className="fa fa-spin fa-circle-o-notch"></i> : <i className="fa fa-save"></i>}</span></button>
+          <button className="btn btn-lg" onClick={() => window.location = '/'}><span className="hidden-xs-down">Back to Dashboard</span><span className="hidden-sm-up"><i className="fa fa-dashboard"></i></span></button>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
         </div>
       </div>
     </div>;
