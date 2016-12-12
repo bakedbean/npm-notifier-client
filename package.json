@@ -74,7 +74,7 @@
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-dropzone": "3.7.3",
-    "react-modal": "1.6.1",
+    "react-modal": "1.6.2",
     "react-redux": "4.4.6",
     "react-router": "^2.8.1",
     "redux": "^3.5.2",
