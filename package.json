@@ -43,7 +43,7 @@
     "chai-immutable": "^1.5.4",
     "css-loader": "0.26.2",
     "enzyme": "2.7.1",
-    "extract-text-webpack-plugin": "2.0.0",
+    "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.10.1",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "9.11.0",
