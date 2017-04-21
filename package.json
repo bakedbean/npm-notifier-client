@@ -73,7 +73,7 @@
     "moment": "2.18.1",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "react-dropzone": "3.12.4",
+    "react-dropzone": "3.13.0",
     "react-modal": "1.7.7",
     "react-redux": "5.0.4",
     "react-router": "4.1.1",
