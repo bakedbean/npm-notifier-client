@@ -60,7 +60,7 @@
     "style-loader": "0.16.1",
     "url-loader": "0.5.8",
     "webpack": "2.4.1",
-    "webpack-dev-server": "2.4.4",
+    "webpack-dev-server": "2.4.5",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
@@ -73,7 +73,7 @@
     "moment": "2.18.1",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "react-dropzone": "3.13.0",
+    "react-dropzone": "3.13.1",
     "react-modal": "1.7.7",
     "react-redux": "5.0.4",
     "react-router": "4.1.1",
