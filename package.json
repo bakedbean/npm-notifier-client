@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "7.1.0",
+    "autoprefixer": "7.1.1",
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
     "babel-polyfill": "6.23.0",
@@ -75,11 +75,11 @@
     "react-dom": "15.5.4",
     "react-dropzone": "3.13.1",
     "react-modal": "1.7.7",
-    "react-redux": "5.0.4",
+    "react-redux": "5.0.5",
     "react-router": "4.1.1",
     "redux": "^3.5.2",
     "redux-promise-middleware": "4.3.0",
     "redux-thunk": "2.2.0",
-    "stripe": "4.19.0"
+    "stripe": "4.19.1"
   }
 }
