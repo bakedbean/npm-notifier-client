@@ -77,7 +77,7 @@
     "react-modal": "2.0.2",
     "react-redux": "5.0.5",
     "react-router": "4.1.1",
-    "redux": "^3.5.2",
+    "redux": "3.7.0",
     "redux-promise-middleware": "4.3.0",
     "redux-thunk": "2.2.0",
     "stripe": "4.22.0"
