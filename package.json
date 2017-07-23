@@ -47,7 +47,7 @@
     "file-loader": "0.11.2",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "11.1.0",
-    "json-loader": "^0.5.4",
+    "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
     "mocha": "3.4.2",
     "node-sass": "4.5.3",
@@ -60,7 +60,7 @@
     "style-loader": "0.18.2",
     "url-loader": "0.5.9",
     "webpack": "3.3.0",
-    "webpack-dev-server": "2.5.1",
+    "webpack-dev-server": "2.6.0",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
