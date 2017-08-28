@@ -78,7 +78,7 @@
     "react-redux": "5.0.6",
     "react-router": "4.2.0",
     "redux": "3.7.2",
-    "redux-promise-middleware": "4.3.0",
+    "redux-promise-middleware": "4.4.1",
     "redux-thunk": "2.2.0",
     "stripe": "4.24.1"
   }
