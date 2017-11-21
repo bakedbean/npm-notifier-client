@@ -50,7 +50,7 @@
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
     "mocha": "4.0.1",
-    "node-sass": "4.7.1",
+    "node-sass": "4.7.2",
     "postcss-loader": "2.0.8",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "3.1.3",
