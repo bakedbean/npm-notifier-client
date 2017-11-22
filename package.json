@@ -68,7 +68,7 @@
     "bootstrap": "^4.0.0-alpha.2",
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.1",
-    "hjs-webpack": "9.1.0",
+    "hjs-webpack": "9.2.0",
     "immutable": "3.8.2",
     "moment": "2.19.2",
     "react": "16.1.1",
