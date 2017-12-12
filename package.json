@@ -70,7 +70,7 @@
     "font-awesome": "^4.6.1",
     "hjs-webpack": "9.2.0",
     "immutable": "3.8.2",
-    "moment": "2.19.3",
+    "moment": "2.19.4",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-dropzone": "4.2.3",
