@@ -49,7 +49,7 @@
     "jsdom": "11.5.1",
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
-    "mocha": "4.1.0",
+    "mocha": "5.0.0",
     "node-sass": "4.7.2",
     "postcss-loader": "2.0.10",
     "react-addons-test-utils": "15.6.2",
@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "bluebird": "3.5.1",
-    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap": "4.0.0",
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.1",
     "hjs-webpack": "9.2.0",
