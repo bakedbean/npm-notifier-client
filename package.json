@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "7.2.5",
+    "autoprefixer": "7.2.6",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
     "babel-polyfill": "6.26.0",
@@ -74,7 +74,7 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-dropzone": "4.2.7",
-    "react-modal": "3.1.12",
+    "react-modal": "3.1.13",
     "react-redux": "5.0.6",
     "react-router": "4.2.0",
     "redux": "3.7.2",
