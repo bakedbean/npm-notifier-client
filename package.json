@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "bluebird": "3.5.1",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.1.0",
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.1",
     "hjs-webpack": "9.2.0",
