@@ -51,7 +51,7 @@
     "jsx-loader": "^0.13.2",
     "mocha": "5.1.1",
     "node-sass": "4.9.0",
-    "postcss-loader": "2.1.4",
+    "postcss-loader": "2.1.5",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "4.1.2",
     "sass-loader": "7.0.1",
@@ -59,7 +59,7 @@
     "sinon-chai": "3.0.0",
     "style-loader": "0.21.0",
     "url-loader": "1.0.1",
-    "webpack": "4.6.0",
+    "webpack": "4.7.0",
     "webpack-dev-server": "3.1.4",
     "webpack-visualizer-plugin": "0.1.11"
   },
