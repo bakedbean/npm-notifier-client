@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "8.4.1",
+    "autoprefixer": "8.5.0",
     "babel-core": "6.26.3",
     "babel-loader": "7.1.4",
     "babel-polyfill": "6.26.0",
