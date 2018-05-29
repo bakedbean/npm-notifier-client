@@ -59,7 +59,7 @@
     "sinon-chai": "3.1.0",
     "style-loader": "0.21.0",
     "url-loader": "1.0.1",
-    "webpack": "4.9.1",
+    "webpack": "4.10.0",
     "webpack-dev-server": "3.1.4",
     "webpack-visualizer-plugin": "0.1.11"
   },
@@ -79,7 +79,7 @@
     "react-router": "4.2.0",
     "redux": "4.0.0",
     "redux-promise-middleware": "5.1.1",
-    "redux-thunk": "2.2.0",
+    "redux-thunk": "2.3.0",
     "stripe": "6.0.0"
   }
 }
