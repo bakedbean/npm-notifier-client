@@ -51,7 +51,7 @@
     "jsx-loader": "^0.13.2",
     "mocha": "5.2.0",
     "node-sass": "4.9.2",
-    "postcss-loader": "2.1.5",
+    "postcss-loader": "2.1.6",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "4.3.3",
     "sass-loader": "7.0.3",
