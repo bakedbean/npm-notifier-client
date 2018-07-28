@@ -46,7 +46,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.11",
     "isomorphic-fetch": "^2.2.1",
-    "jsdom": "11.11.0",
+    "jsdom": "11.12.0",
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
     "mocha": "5.2.0",
@@ -59,7 +59,7 @@
     "sinon-chai": "3.2.0",
     "style-loader": "0.21.0",
     "url-loader": "1.0.1",
-    "webpack": "4.16.2",
+    "webpack": "4.16.3",
     "webpack-dev-server": "3.1.5",
     "webpack-visualizer-plugin": "0.1.11"
   },
