@@ -60,7 +60,7 @@
     "style-loader": "0.23.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
-    "webpack-dev-server": "3.1.8",
+    "webpack-dev-server": "3.1.9",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
@@ -80,6 +80,6 @@
     "redux": "4.0.0",
     "redux-promise-middleware": "5.1.1",
     "redux-thunk": "2.3.0",
-    "stripe": "6.11.0"
+    "stripe": "6.12.1"
   }
 }
