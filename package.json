@@ -42,7 +42,7 @@
     "chai": "4.2.0",
     "chai-immutable": "^1.5.4",
     "css-loader": "1.0.0",
-    "enzyme": "3.6.0",
+    "enzyme": "3.7.0",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "2.0.0",
     "isomorphic-fetch": "^2.2.1",
