@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "9.2.1",
+    "autoprefixer": "9.3.0",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.4",
     "babel-polyfill": "6.26.0",
@@ -60,7 +60,7 @@
     "style-loader": "0.23.1",
     "url-loader": "1.1.2",
     "webpack": "4.22.0",
-    "webpack-dev-server": "3.1.9",
+    "webpack-dev-server": "3.1.10",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
@@ -71,8 +71,8 @@
     "hjs-webpack": "9.2.0",
     "immutable": "3.8.2",
     "moment": "2.22.2",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
     "react-dropzone": "6.2.4",
     "react-modal": "3.6.1",
     "react-redux": "5.0.7",
