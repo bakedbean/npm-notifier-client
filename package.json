@@ -80,6 +80,6 @@
     "redux": "4.0.1",
     "redux-promise-middleware": "5.1.1",
     "redux-thunk": "2.3.0",
-    "stripe": "6.13.0"
+    "stripe": "6.14.0"
   }
 }
