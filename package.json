@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "bluebird": "3.5.3",
-    "bootstrap": "4.3.0",
+    "bootstrap": "4.3.1",
     "classnames": "2.2.6",
     "font-awesome": "^4.6.1",
     "hjs-webpack": "9.2.0",
@@ -78,8 +78,8 @@
     "react-redux": "6.0.0",
     "react-router": "4.3.1",
     "redux": "4.0.1",
-    "redux-promise-middleware": "6.0.1",
+    "redux-promise-middleware": "6.1.0",
     "redux-thunk": "2.3.0",
-    "stripe": "6.24.0"
+    "stripe": "6.25.0"
   }
 }
