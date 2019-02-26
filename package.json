@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "9.4.8",
+    "autoprefixer": "9.4.9",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.5",
     "babel-polyfill": "6.26.0",
@@ -49,7 +49,7 @@
     "jsdom": "13.2.0",
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
-    "mocha": "6.0.1",
+    "mocha": "6.0.2",
     "node-sass": "4.11.0",
     "postcss-loader": "3.0.0",
     "react-addons-test-utils": "15.6.2",
@@ -60,7 +60,7 @@
     "style-loader": "0.23.1",
     "url-loader": "1.1.2",
     "webpack": "4.29.5",
-    "webpack-dev-server": "3.2.0",
+    "webpack-dev-server": "3.2.1",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
