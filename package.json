@@ -31,7 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "9.6.5",
+    "autoprefixer": "9.7.0",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
     "babel-polyfill": "6.26.0",
@@ -50,7 +50,7 @@
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
     "mocha": "6.2.2",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.0",
     "postcss-loader": "3.0.0",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "4.12.15",
