@@ -57,15 +57,15 @@
     "sass-loader": "8.0.0",
     "sinon": "7.5.0",
     "sinon-chai": "3.3.0",
-    "style-loader": "1.0.0",
+    "style-loader": "1.0.1",
     "url-loader": "3.0.0",
     "webpack": "4.41.2",
     "webpack-dev-server": "3.9.0",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
-    "bluebird": "3.7.1",
-    "bootstrap": "4.4.0",
+    "bluebird": "3.7.2",
+    "bootstrap": "4.4.1",
     "classnames": "2.2.6",
     "font-awesome": "^4.6.1",
     "hjs-webpack": "9.2.0",
