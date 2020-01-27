@@ -49,7 +49,7 @@
     "jsdom": "16.0.1",
     "json-loader": "0.5.7",
     "jsx-loader": "^0.13.2",
-    "mocha": "7.0.0",
+    "mocha": "7.0.1",
     "node-sass": "4.13.1",
     "postcss-loader": "3.0.0",
     "react-addons-test-utils": "15.6.2",
